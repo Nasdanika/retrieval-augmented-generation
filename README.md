@@ -60,6 +60,7 @@ Initial focus on wrappping Azure Open AI for embedding and aggregation.
     * Native - data in memory with optional storage somewhere
         * Brute force - (parallel) stream, compute similarity, sort
         * Indexed - use https://github.com/jelmerk/hnswlib / https://mvnrepository.com/artifact/com.github.jelmerk/hnswlib-core-jdk17, take a look at embeddings4j - adapt if possible
+        * Graph traversal - graph nodes are query engines or there is a function/adapter. Results are "keyed" by path(s). Final similarity is computed from source similarity and path weight. E.g. a distant node may have high similarity, but it might be too far to be relevant.
     * Vector DB adapters. E.g. Milvus (https://milvus.io/, https://milvus.io/docs/install-java.md)
 * https://opensearch.org/
 
