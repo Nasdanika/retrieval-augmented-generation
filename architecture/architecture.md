@@ -119,6 +119,10 @@ Takes the request, query results, generator response and creates a response for 
 
 A user (client) of a RAG solution - a human or a system.
 
+## Resources
+
+* [Model documentation](model/)
+
 ## Roadmap
 
 * Java Core module

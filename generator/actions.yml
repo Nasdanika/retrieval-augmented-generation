@@ -22,7 +22,7 @@ app-action:
               content-resource: classpath://org/nasdanika/html/model/app/gen/semantic-info.html
   navigation:
     - app-action:
-        location: https://github.com/Nasdanika/retrieval-augmented-generation/model/
+        location: https://github.com/Nasdanika/retrieval-augmented-generation/tree/main/model
         icon: fab fa-github
         text: Sources
           
