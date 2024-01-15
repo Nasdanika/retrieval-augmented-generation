@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="EN">
+  <head>
+    <title>Diagram</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cerulean/bootstrap.min.css" id="nsd-bootstrap-theme-stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Nasdanika/html@master/model/app.gen/web-resources/css/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jstree@3.3.16/dist/themes/default/style.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.0/github-markdown.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/default.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-vue@2.23.0/dist/bootstrap-vue.css">
+    <script src="https://cdn.jsdelivr.net/gh/Nasdanika/html@master/model/app.gen/web-resources/js/common.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Nasdanika/html@master/model/app.gen/web-resources/js/dark-head.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jstree@3.3.16/dist/jstree.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-vue@2.23.0/dist/bootstrap-vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Nasdanika/html@master/model/app.gen/web-resources/js/components/table.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/components/table.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script><!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9BRJVLK8CC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9BRJVLK8CC');
+</script>    
+
+<script src="../../../search-documents.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/olivernn/lunr.js@v2.3.9/lunr.js"></script>
+
+<script>
+// Script for full-text search of JsTree
+
+window.nsdJsTreeSearchCallback = function(str, node) { 
+    var sf = new $.vakata.search(str, true, { caseSensitive : false, fuzzy : false }); 
+    if (sf.search(node.text).isMatch) {
+		return true;
+	} 
+    let searchResult = this.search(str); 
+    for (const sr in searchResult) {
+        if (searchResult[sr].ref === node.original['data-nsd-label-uuid']) {
+            return true;
+        } 
+    } 
+    return false; 
+}.bind(lunr(function () {
+			  this.ref('id');
+			  this.field('title');
+			  this.field('content');
+
+			  for (const key in searchDocuments) {
+				  let doc = searchDocuments[key];
+				this.add({
+					id: doc['action-uuid'],
+					title: doc.title,
+					path: doc.path,
+					content: doc.content
+				});  
+			  }
+			}));
+</script>
+
+<script src="../../../../search-documents.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/olivernn/lunr.js@v2.3.9/lunr.js"></script>
+
+<script>
+// Script for full-text search of JsTree
+
+window.nsdJsTreeSearchCallback = function(str, node) { 
+    var sf = new $.vakata.search(str, true, { caseSensitive : false, fuzzy : false }); 
+    if (sf.search(node.text).isMatch) {
+		return true;
+	} 
+    let searchResult = this.search(str); 
+    for (const sr in searchResult) {
+        if (searchResult[sr].ref === node.original['data-nsd-label-uuid']) {
+            return true;
+        } 
+    } 
+    return false; 
+}.bind(lunr(function () {
+			  this.ref('id');
+			  this.field('title');
+			  this.field('content');
+
+			  for (const key in searchDocuments) {
+				  let doc = searchDocuments[key];
+				this.add({
+					id: doc['action-uuid'],
+					title: doc.title,
+					path: doc.path,
+					content: doc.content
+				});  
+			  }
+			}));
+</script>
+</head>
+  <body>
+    <div class="container-fluid nsd-app-container">
+      <div class="row">
+        <div class="col nsd-app-header">
+          <a href="https://rag.nasdanika.org/" data-nsd-label-uuid="b8cd9a78-0dff-4d55-be2d-b1480c1e4ada" class="nsd-app-header-title">
+            <img src="https://docs.nasdanika.org/images/nasdanika-logo.png" class="nsd-app-label-icon">Nasdanika RAG</a>
+          <ul class="nav nsd-app-header-navs">
+            <li class="nav-item">
+              <a href="../../../search.html" data-nsd-label-uuid="74eb205c-8bbd-494f-8305-87fc7eeaba3e" class="nav-link"><span class="fas fa-search nsd-app-label-icon"></span>Search</a>
+            </li>
+            <li class="nav-item">
+              <a href="../../../glossary.html" data-nsd-label-uuid="f382bb88-c34e-4e00-b255-6cdc04996246" class="nav-link"><span class="fas fa-book nsd-app-label-icon"></span>Glossary</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col nsd-app-navbar">
+          <ul class="navbar navbar-light navbar-expand-lg">
+            <a href="../../../index.html" data-nsd-label-uuid="592b9022-3f12-4035-8be3-18432892e9ff" class="navbar-brand">
+              <img src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EPackage.gif" class="nsd-app-label-icon">model</a>
+            <button type="button" data-toggle="collapse" data-target="#nsd_4o" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="nsd_4o" class="collapse navbar-collapse">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a href="../../../classifiers.html" data-nsd-label-uuid="b67b8fe9-32ae-4323-b016-4c5f32f5533c" class="nav-link">Classifiers</a>
+                </li>
+                <li class="nav-item">
+                  <a href="../../../diagram.html" data-nsd-label-uuid="2cc8d73f-92c8-4104-a3be-fd1a815c8d0f" class="nav-link"><span class="fas fa-project-diagram nsd-app-label-icon"></span>Diagram</a>
+                </li>
+                <li class="nav-item">
+                  </li><li data-nsd-label-uuid="3cb2c1b3-6853-4486-a99d-588cc71e1efd" class="dropdown">
+                    <a role="button" data-toggle="dropdown" class="nav-link dropdown-toggle">
+                      <img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/16/external-diagram-seo-media-dreamstale-lineal-dreamstale.png" class="nsd-app-label-icon">Graphs</a>
+                    <div class="dropdown-menu">
+                      <a href="../../../default-graph.html" data-nsd-label-uuid="531b5dcd-cacb-42ea-87f4-fb38bb23da48" class="dropdown-item">Default Graph</a>
+                      <a href="../../../circular-layout-graph.html" data-nsd-label-uuid="d719c75b-41d8-479d-a48b-7e47e0d14025" class="dropdown-item">Circular Graph</a>
+                      <a href="../../../force-layout-graph.html" data-nsd-label-uuid="08221ddf-94f9-464c-893d-972cd29b9c5f" class="dropdown-item">Force Graph</a>
+                      <div title="With dependencies and sub-packages" class="dropdown-divider"></div>
+                      <a href="../../../default-graph-with-dependencies-and-subpackages.html" data-nsd-label-uuid="5fbadca1-38c4-4aad-8a4d-ccfb562b275c" class="dropdown-item">Default Graph</a>
+                      <a href="../../../circular-layout-graph-with-dependencies-and-subpackages.html" data-nsd-label-uuid="9205ec97-b77d-416b-b564-fe5b356f904e" class="dropdown-item">Circular Graph</a>
+                      <a href="../../../force-layout-graph-with-dependencies-and-subpackages.html" data-nsd-label-uuid="d2033cd3-0c42-456c-9a9c-7717e9a077fe" class="dropdown-item">Force Graph</a>
+                    </div>
+                  </li>
+                
+              </ul>
+            </div>
+          </ul>
+        </div>
+      </div>
+      <div class="row nsd-app-content-row">
+        <div class="col nsd-app-navigation-panel">
+          <div class="list-group list-group-flush">
+            <a href="../DoubleVectorStringItem/index.html" title="DoubleVectorStringStore item - a mapping of String id to a double vector." data-nsd-label-uuid="032448af-7041-4aa0-b128-8a1dc42bda2f" class="list-group-item list-group-action">
+              <img src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EClass.gif" class="nsd-app-label-icon">DoubleVectorStringItem</a>
+            <a href="../DoubleVectorStringStore/index.html" title="Stores double vectors identified by strrings (URI's)" data-nsd-label-uuid="d27284e7-16e5-48cf-b6d4-4f9b061e2b5e" class="list-group-item list-group-action">
+              <img src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EClass.gif" class="nsd-app-label-icon">DoubleVectorStringStore</a>
+            <a href="../FloatVectorStringItem/index.html" title="FloatVectorStringStore item - a mapping of String id to a float vector." data-nsd-label-uuid="551d4821-ad89-4477-a5c3-0f23c849bbdd" class="list-group-item list-group-action">
+              <img src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EClass.gif" class="nsd-app-label-icon">FloatVectorStringItem</a>
+            <a href="index.html" title="Stores float vectors identified by strrings (URI's)" data-nsd-label-uuid="bd4a80b2-9621-4e4d-9f3c-1ea767c53c46" class="list-group-item list-group-action active">
+              <img src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EClass.gif" class="nsd-app-label-icon">FloatVectorStringStore</a>
+          </div>
+        </div>
+        <div data-nsd-label-uuid="a81ad428-6f57-4b8b-9df4-1e3e3058b7e6" data-nsd-action-uris="uuid:a81ad428-6f57-4b8b-9df4-1e3e3058b7e6" class="col nsd-app-content-panel">
+          <div class="container-fluid">
+            <div class="row nsd-app-content-panel-breadcrumb-row">
+              <div class="col">
+                <nav aria-label="breadcrumb" class="nsd-app-content-panel-breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                      <a href="index.html" title="Stores float vectors identified by strrings (URI's)" data-nsd-label-uuid="bd4a80b2-9621-4e4d-9f3c-1ea767c53c46">
+                        <img src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EClass.gif" class="nsd-app-label-icon">FloatVectorStringStore</a>
+                    </li>
+                    <li class="breadcrumb-item active"><span data-nsd-label-uuid="a81ad428-6f57-4b8b-9df4-1e3e3058b7e6"><span class="fas fa-project-diagram nsd-app-label-icon"></span>Diagram</span>
+                    </li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
+            <div class="row nsd-app-content-panel-title-and-items-row">
+              <div class="col-auto">
+                <h1><span data-nsd-label-uuid="a81ad428-6f57-4b8b-9df4-1e3e3058b7e6" class="nsd-app-content-panel-title"><span class="fas fa-project-diagram nsd-app-label-icon"></span>Diagram</span>
+                </h1>
+              </div>
+            </div>
+            <div class="row nsd-app-content-panel-content-row">
+              <div class="col">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col"><img src="data:image/png;base64, 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" usemap="#plantuml_map_629d460c-662c-4b1b-8600-a6ab4b9be8c4">
+<map id="plantuml_map_629d460c-662c-4b1b-8600-a6ab4b9be8c4" name="plantuml_map_629d460c-662c-4b1b-8600-a6ab4b9be8c4">
+<area shape="rect" id="id1" href="https://ecore.models.nasdanika.org/references/eClassifiers/EFloat/index.html" title="https://ecore.models.nasdanika.org/references/eClassifiers/EFloat/index.html" alt="" coords="68,193,109,210">
+<area shape="rect" id="id2" href="https://ncore.models.nasdanika.org/references/eClassifiers/StringIdentity/index.html" title="Base for classes which are unquely identified by a string in their containment reference" alt="" coords="17,167,99,185">
+<area shape="rect" id="id3" href="../FloatVectorStringItem/references/eStructuralFeatures/vector/index.html" title="Vector elements" alt="" coords="17,193,109,210">
+<area shape="rect" id="id4" href="references/eStructuralFeatures/items/index.html" title="Store items" alt="" coords="89,55,128,132">
+<area shape="rect" id="id5" href="" title="Stores float vectors identified by strrings (URI's)" alt="" coords="7,7,183,55">
+<area shape="rect" id="id6" href="../FloatVectorStringItem/index.html" title="FloatVectorStringStore item - a mapping of String id to a float vector." alt="" coords="11,133,179,224">
+</map>
+</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col nsd-app-footer">
+          <ul class="nav nsd-app-footer-navs">
+            <li class="nav-item">
+              <a href="https://github.com/Nasdanika/retrieval-augmented-generation/model/" data-nsd-label-uuid="60c4ff60-3c8e-4438-9cc3-2e65af5db0db" class="nav-link"><span class="fab fa-github nsd-app-label-icon"></span>Sources</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

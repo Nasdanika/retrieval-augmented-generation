@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.nasdanika.rag.model/src/main/java" creationIcons="false"
+    editorDirectory="" modelPluginID="org.nasdanika.rag.model" modelName="Rag" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" featureDelegation="Dynamic" complianceLevel="17.0"
+    suppressGenModelAnnotations="false" copyrightFields="false" usedGenPackages="../../org.nasdanika.ncore/model/ncore.genmodel#//ncore"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>rag.ecore</foreignModel>
+  <genPackages prefix="Rag" basePackage="org.nasdanika.rag" disposableProviderFactory="true"
+      ecorePackage="rag.ecore#/">
+    <genClasses ecoreClass="rag.ecore#//DoubleVectorStringItem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rag.ecore#//DoubleVectorStringItem/vector"/>
+    </genClasses>
+    <genClasses ecoreClass="rag.ecore#//DoubleVectorStringStore">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rag.ecore#//DoubleVectorStringStore/items"/>
+    </genClasses>
+    <genClasses ecoreClass="rag.ecore#//FloatVectorStringItem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute rag.ecore#//FloatVectorStringItem/vector"/>
+    </genClasses>
+    <genClasses ecoreClass="rag.ecore#//FloatVectorStringStore">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference rag.ecore#//FloatVectorStringStore/items"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

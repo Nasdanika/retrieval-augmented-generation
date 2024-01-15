@@ -158,7 +158,10 @@
 	</developers>
 
 	<modules>
-		<!--<module>...</module>-->
+		<module>model</module>
+		<module>core</module>
+		<module>processors</module>
+		<module>open-ai</module>
 	</modules>
 	 <profiles>
 		<profile>

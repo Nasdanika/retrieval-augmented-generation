@@ -41,6 +41,7 @@ As such, the data source ecosystem would include the following:
     
 The data sources ecosystem doesn't have to be RAG-specific - it can be used for other purposes as well.
 For example, for [reasoning](https://github.com/Nasdanika-Models/reasoning).
+Reasoning and RAG might be combined with RAG/AI rules in which conclusions may be used as prompts/chains of thought. 
 
 ## Roadmap
 

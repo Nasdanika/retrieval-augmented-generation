@@ -4,6 +4,9 @@ The goal of the framework is to provide Java developers means to assemble RAG de
 The framework takes Capability, Architecture/Solution building blocks approach.
 Architecture building blocks provide one or more capability, solution building blocks implement one or more architecture building blocks.
 
+One of definitions of software development is "the process of incremental binding of decisions to make them executable". 
+This framework follows this paradigm - it defines high-level generic abstractions then progressively binds generic parameters and then concrete implementations.
+
 ```drawio
 ${representations/drawio/diagram}
 ```
@@ -115,3 +118,19 @@ Takes the request, query results, generator response and creates a response for 
 ## User
 
 A user (client) of a RAG solution - a human or a system.
+
+## Roadmap
+
+* Java Core module
+* Ecore model
+* Processors - ecore, doc, factories
+* Drawio mapping
+* Eclipse tree editor
+* Eclipse Sirius designer
+* AI models - Claude antroipic, Orca-2, ...
+* Caching implementations for query engine, key extractor, and generator:
+    * Memory-sensitive cache based on [Apache Commons Pool](https://commons.apache.org/proper/commons-pool/)
+    * [Hazelcast](https://hazelcast.com/developers/clients/java/) based cache. Can be used in conjunction with [Hazecast Docker Image](https://hub.docker.com/r/hazelcast/hazelcast)
+    * Other implementations as needed, e.g. RDBMS -> [H2](https://www.h2database.com/html/main.html), ...
+* User feedback collection - ranking of answers, providing the right answer (and then use similarity to choose the best of available)
+* Benchmarking

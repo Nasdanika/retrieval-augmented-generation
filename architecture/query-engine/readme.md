@@ -17,4 +17,17 @@ Implementations (solution building blocks to provide):
 * Bag of words - explore what Apache OpenNLP, Smile NLP and WordNet have to offer
 
     
+Default/static methods:
+
+* ``from()`` methods to create query engines from functions and interfaces. E.g. from iterable and similarity function.
+* Composition - Binary operator. default and static methods. 
+* Predicate to limit. Similarity caching predicate.
+* Flat map - expansion. E.g. neighbors of exact match.
+
+
+TODO: Javadoc links to modules once published
+
+Excecutor to query engine? Or parallel flag? Iterable -> stream -> parallel
+
+
 
