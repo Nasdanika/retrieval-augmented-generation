@@ -2,62 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" >
   <url>
     <loc>https://rag.nasdanika.org/glossary.html</loc>
-    <lastmod>2024-01-14T16:53:01.104-05:00</lastmod>
+    <lastmod>2024-01-15T06:12:43.747-05:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://rag.nasdanika.org/index.html</loc>
-    <lastmod>2024-01-14T16:53:00.992-05:00</lastmod>
+    <lastmod>2024-01-15T06:12:43.567-05:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://rag.nasdanika.org/r0/data-sources/index.html</loc>
-    <lastmod>2024-01-14T16:53:00.998-05:00</lastmod>
+    <lastmod>2024-01-15T06:12:43.590-05:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://rag.nasdanika.org/r0/generator/index.html</loc>
-    <lastmod>2024-01-14T16:53:01.005-05:00</lastmod>
+    <lastmod>2024-01-15T06:12:43.650-05:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://rag.nasdanika.org/r0/key-extractor/index.html</loc>
-    <lastmod>2024-01-14T16:53:01.022-05:00</lastmod>
+    <lastmod>2024-01-15T06:12:43.653-05:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://rag.nasdanika.org/r0/loader/index.html</loc>
-    <lastmod>2024-01-14T16:53:01.028-05:00</lastmod>
+    <lastmod>2024-01-15T06:12:43.667-05:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://rag.nasdanika.org/r0/query-engine/index.html</loc>
-    <lastmod>2024-01-14T16:53:01.047-05:00</lastmod>
+    <lastmod>2024-01-15T06:12:43.717-05:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://rag.nasdanika.org/r0/requestor/index.html</loc>
-    <lastmod>2024-01-14T16:53:01.055-05:00</lastmod>
+    <lastmod>2024-01-15T06:12:43.720-05:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://rag.nasdanika.org/r0/responder/index.html</loc>
-    <lastmod>2024-01-14T16:53:01.075-05:00</lastmod>
+    <lastmod>2024-01-15T06:12:43.728-05:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://rag.nasdanika.org/r0/store/index.html</loc>
-    <lastmod>2024-01-14T16:53:01.087-05:00</lastmod>
+    <lastmod>2024-01-15T06:12:43.736-05:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://rag.nasdanika.org/r0/user/index.html</loc>
-    <lastmod>2024-01-14T16:53:01.093-05:00</lastmod>
+    <lastmod>2024-01-15T06:12:43.739-05:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://rag.nasdanika.org/search.html</loc>
-    <lastmod>2024-01-14T16:53:01.099-05:00</lastmod>
+    <lastmod>2024-01-15T06:12:43.743-05:00</lastmod>
     <changefreq>weekly</changefreq>
   </url>
 </urlset>

@@ -29,7 +29,7 @@ import org.nasdanika.models.architecture.util.ArchitectureDrawioResourceFactory;
 public class TestRagArchitectureSiteGen {
 		
 	@Test
-	public void testGenerateRagArchitectureSiteWithMapping() throws Exception {
+	public void testGenerateRagArchitectureSite() throws Exception {
 		ResourceSet resourceSet = new ResourceSetImpl();
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("drawio", new ArchitectureDrawioResourceFactory(uri -> resourceSet.getEObject(uri, true)));
 				

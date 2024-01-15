@@ -1,6 +1,6 @@
 [
     {
-        "identifiers": ["uuid:a611f1ad-c638-41f2-9562-00934e7e8c59"],
+        "identifiers": ["uuid:9a66b7bc-50a5-4026-93dd-bac561c58a31"],
         "name": "Nasdanika",
         "icon": "https://docs.nasdanika.org/images/nasdanika-logo.png",
         "location": "https://docs.nasdanika.org/",
@@ -12,9 +12,9 @@
     {
         "container": {
             "reference": "children",
-            "identifiers": ["uuid:a611f1ad-c638-41f2-9562-00934e7e8c59"]
+            "identifiers": ["uuid:9a66b7bc-50a5-4026-93dd-bac561c58a31"]
         },
-        "identifiers": ["uuid:e4196be4-8b3d-4524-8120-6a38d2865314"],
+        "identifiers": ["uuid:fd45622c-dcb3-4d30-b6c8-8ac36ff52776"],
         "name": "Search",
         "icon": "fas fa-search",
         "location": "search.html",
@@ -26,9 +26,9 @@
     {
         "container": {
             "reference": "children",
-            "identifiers": ["uuid:a611f1ad-c638-41f2-9562-00934e7e8c59"]
+            "identifiers": ["uuid:9a66b7bc-50a5-4026-93dd-bac561c58a31"]
         },
-        "identifiers": ["uuid:b1dd3649-c5ef-4989-8ee7-718ec0773129"],
+        "identifiers": ["uuid:b22dd9b8-1664-47e0-90b7-5791139f4afc"],
         "name": "Glossary",
         "icon": "fas fa-book",
         "location": "glossary.html",
@@ -40,9 +40,9 @@
     {
         "container": {
             "reference": "navigation",
-            "identifiers": ["uuid:a611f1ad-c638-41f2-9562-00934e7e8c59"]
+            "identifiers": ["uuid:9a66b7bc-50a5-4026-93dd-bac561c58a31"]
         },
-        "identifiers": ["uuid:8f5e1ad2-f320-4a64-a2f9-32407c882657"],
+        "identifiers": ["uuid:e1cf0eb5-a51e-4eb3-b7ee-bd1a7e9a9f49"],
         "name": "Sources",
         "icon": "fab fa-github",
         "location": "https://github.com/Nasdanika/retrieval-augmented-generation",
@@ -52,7 +52,7 @@
         }
     },
     {
-        "identifiers": ["uuid:01657299-add3-4661-8eed-1e80909b3485"],
+        "identifiers": ["uuid:cb3d1065-4ebc-4344-94ca-284a8c6fa8fd"],
         "name": "Retrieval Augmented Generation",
         "location": "index.html",
         "type": {
@@ -63,10 +63,10 @@
     {
         "container": {
             "reference": "elements",
-            "identifiers": ["uuid:01657299-add3-4661-8eed-1e80909b3485"],
+            "identifiers": ["uuid:cb3d1065-4ebc-4344-94ca-284a8c6fa8fd"],
             "name": "Retrieval Augmented Generation"
         },
-        "identifiers": ["uuid:11b5d1f3-bf77-4044-90e9-b50f34948cef"],
+        "identifiers": ["uuid:db227f85-d546-41ef-86c9-335f46fe31c7"],
         "name": "Data Sources",
         "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAB6UlEQVR4XtXQzUvbYADHcf+BQZ9tutoXGTs4Z6ftQcTOQ5r04sUX3GWdVXceO43BlnbdSTw0tkWH4kFBTRw0dZe5F62F3TbwICydk8Emaj04bH35B/ztSRrCFgi0F9EffEguz5c8qam5VOucPbzCLZwOBsXTSU48yVIKJx7vUgecpDra5aSSwi2WskGpOMktFgfVM+aOsc6pPyINghNVJ7rjMulIV9IVwYqHuDddEM0dY77IluyLbqFt5Bfa4zvoSO7BP16Af2If/tcFdEzsoT21gzbhN3yjP+F5lcedmCKbO8bUoJf/AS+/idZIWUvku+ZutMwTzWuaX6qU8w4+38xUG2yKfMuYO8ZuDq/Ktx9/gefpBlpe5C2DzbyCxmcbuPXkK5yPPlt/oTu0LLtD7+HSfIA7vIKGoSwahnMa91AOzvAaHANZag31lCOcqzzoevgRTs0naoVahUNVadAVWs5UG6wfyFn/Q3vPfMb14F3lQfpe25u2DhI2Ll9lE7jeNY267jnY+97A3i/Dfn+Jeosb/Uuo60ujtlvCta4ZEHYchElZX1kNkkAcJCDoxgw2JvGPpC51zkEbI8Ro8KyK4BkVM3f+GwkKrYQReCptC4yt09g2fR7QkGqbWidMMk2YBG9jE17z+Yu/vxFh4zk+8uCxAAAAAElFTkSuQmCC",
         "description": "Sources of data items - HTML pages, PDF files, databases, OCR JSON's, diagrams, ...",
@@ -79,10 +79,10 @@
     {
         "container": {
             "reference": "elements",
-            "identifiers": ["uuid:01657299-add3-4661-8eed-1e80909b3485"],
+            "identifiers": ["uuid:cb3d1065-4ebc-4344-94ca-284a8c6fa8fd"],
             "name": "Retrieval Augmented Generation"
         },
-        "identifiers": ["uuid:91f1a07a-c92b-4406-b02e-92563080c0ac"],
+        "identifiers": ["uuid:bad1e652-8351-4254-a40a-b23c6143d808"],
         "name": "Generator",
         "description": "Creates a summary response from a request and query results. \n\nThis component might not be present in some embodiments. E.g. in the case of Semantic Search the Responder will generate a response.",
         "location": "r0/generator/index.html",
@@ -94,10 +94,10 @@
     {
         "container": {
             "reference": "elements",
-            "identifiers": ["uuid:01657299-add3-4661-8eed-1e80909b3485"],
+            "identifiers": ["uuid:cb3d1065-4ebc-4344-94ca-284a8c6fa8fd"],
             "name": "Retrieval Augmented Generation"
         },
-        "identifiers": ["uuid:0e4d4f41-cca8-4ec7-ac7c-282ec66d7038"],
+        "identifiers": ["uuid:e49c41ac-113c-469c-9f20-6666e09f6ae2"],
         "name": "Key Extractor",
         "description": "Computes store/retrieval key.\nFor example, a vector embedding. \nKey may have a measure of similarity. \nFor example, cosine similarity for vectors",
         "location": "r0/key-extractor/index.html",
@@ -109,10 +109,10 @@
     {
         "container": {
             "reference": "elements",
-            "identifiers": ["uuid:01657299-add3-4661-8eed-1e80909b3485"],
+            "identifiers": ["uuid:cb3d1065-4ebc-4344-94ca-284a8c6fa8fd"],
             "name": "Retrieval Augmented Generation"
         },
-        "identifiers": ["uuid:22b50e82-74a8-409a-93cc-d93ad2a1eebe"],
+        "identifiers": ["uuid:f0f61b85-0284-4bcf-a697-8ebbe4d7e1b9"],
         "name": "Loader",
         "description": "Loads data items from data sources to a store for subsequent retrieval.\nMay store by value or by references.\nMay create multiple store entries per data item. \nFor example, it may break down a PDF/HTML documents into sections and then into paragraphs and create entries per paragraph.\nMay also index entries by the key.",
         "location": "r0/loader/index.html",
@@ -124,10 +124,10 @@
     {
         "container": {
             "reference": "elements",
-            "identifiers": ["uuid:01657299-add3-4661-8eed-1e80909b3485"],
+            "identifiers": ["uuid:cb3d1065-4ebc-4344-94ca-284a8c6fa8fd"],
             "name": "Retrieval Augmented Generation"
         },
-        "identifiers": ["uuid:3960f5f4-4c17-4d48-b752-d580facc2cb1"],
+        "identifiers": ["uuid:d2930122-028c-49ad-bb36-12cb5311eece"],
         "name": "Query Engine",
         "description": "Takes a request and uses the key extractor to compute a request key.\nThen uses the key to retrieve matching items from the store.\nIf the key type supports similarity computation, then orders results by similarity.\nMay index store entries for faster retrieval.",
         "location": "r0/query-engine/index.html",
@@ -139,10 +139,10 @@
     {
         "container": {
             "reference": "elements",
-            "identifiers": ["uuid:01657299-add3-4661-8eed-1e80909b3485"],
+            "identifiers": ["uuid:cb3d1065-4ebc-4344-94ca-284a8c6fa8fd"],
             "name": "Retrieval Augmented Generation"
         },
-        "identifiers": ["uuid:ce77dd6f-7f37-47c2-ac38-27d552608aca"],
+        "identifiers": ["uuid:426b1748-17a6-455a-949c-db1d33459a22"],
         "name": "Requestor",
         "description": "Takes a request, passes to the query engine. \nThen uses the request and the query results to formulate a request to the generator. \nFor example, if the generator is an LLM, it would create prompts or chains of thought from the query results.\nThen it passes the request, the query results, and the response from the generator to the responder.",
         "location": "r0/requestor/index.html",
@@ -154,10 +154,10 @@
     {
         "container": {
             "reference": "elements",
-            "identifiers": ["uuid:01657299-add3-4661-8eed-1e80909b3485"],
+            "identifiers": ["uuid:cb3d1065-4ebc-4344-94ca-284a8c6fa8fd"],
             "name": "Retrieval Augmented Generation"
         },
-        "identifiers": ["uuid:0f94adda-1de7-4d20-9edf-879897523f8c"],
+        "identifiers": ["uuid:d1532822-bf05-4165-9d87-606e3298bf8c"],
         "name": "Responder",
         "description": "Takes the request, query results, generator response and creates a response for the user.",
         "location": "r0/responder/index.html",
@@ -169,10 +169,10 @@
     {
         "container": {
             "reference": "elements",
-            "identifiers": ["uuid:01657299-add3-4661-8eed-1e80909b3485"],
+            "identifiers": ["uuid:cb3d1065-4ebc-4344-94ca-284a8c6fa8fd"],
             "name": "Retrieval Augmented Generation"
         },
-        "identifiers": ["uuid:8688fe29-7451-4ed1-80af-cfd17d468375"],
+        "identifiers": ["uuid:05c7a03b-7211-46df-93db-9f4f3d71e403"],
         "name": "Store",
         "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAB3klEQVR4XpWUTUsCURSGZ9Gilv2BWrVs299oV78iKPOrKJpFUPm5LQhsZhyJRMo0qQhMwdQov0rNbBVFQUka7W/zXhypOzN+XHjhcM77HOace5XjdA7Px4c8Nt+k07w34zSL826rsAohdliEWdTgYTnNcVh8E9vrod0j4aqROKmSfOqVVPMNUr9vUSFGDjV44AXD9qFnyypMRfzZn8dSkzyVv/sSvGDAsv04t1VaK2beNFAvgQHL9uPcdokPS2lyHiqQ8u2HBmQFD7xgwLL9OPeyxNfvmqSUfSdnwTxGIRE5S6LyNYkG2lJi5FCDB14wYNl+nYbsl0DqpbB5WjNsqHx2rfSlAXoJjO7ITqvAh8U0qRX7bwovGLBsPzoybgw7OvZnyGW0QnKpF807RA41eOClt6w78p8dAgaIB3wazHUuBTFyqKk77brDQR61KjCGO7w4LGmAXgJjuMNk7IEu+Sb5rAFZwQMvGP2R2zvECAnFRB92+3H/UzufiFWp13iHXR52Nxk3tAmmfn7DrMCAZftxG3Z5VPSeFgb5x4EXDFi2Hz087xv2LgVM+zvxKm4Pi6/kPpWxWlSIkUMNHng9CwcjbB/ds2kTx5xmYVr5y59zWcQVCDFyrkV5nPWr5xeK1c0WtEuRDAAAAABJRU5ErkJggg==",
         "location": "r0/store/index.html",
@@ -184,10 +184,10 @@
     {
         "container": {
             "reference": "elements",
-            "identifiers": ["uuid:01657299-add3-4661-8eed-1e80909b3485"],
+            "identifiers": ["uuid:cb3d1065-4ebc-4344-94ca-284a8c6fa8fd"],
             "name": "Retrieval Augmented Generation"
         },
-        "identifiers": ["uuid:0b10a135-e228-4805-8c7d-7686bb1badcb"],
+        "identifiers": ["uuid:26b563b3-540c-470e-abfb-7c48f2023c95"],
         "name": "User",
         "icon": "https://img.icons8.com/officel/16/user.png",
         "description": "A user (client) of a RAG solution - humann or system",
