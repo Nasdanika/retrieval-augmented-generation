@@ -15,32 +15,35 @@ The diagram above depicts the architecture building blocks.
 The below diagram shows how the building blocks interact during loading and retrieval/generation phases.
 
 ```uml
-
 hide footbox
 
+database dataSources as "Data Sources" [[r0/data-sources/index.html]]
+participant Loader [[r0/loader/index.html]]
 actor User [[r0/user/index.html]]
 boundary Requestor [[r0/requestor/index.html]]
-participant queryEngine as "Query Engine" [[r0/query-engine/index.html]]
+box "Repository" #LightBlue 
+participant itemBuilder as "Item Builder" [[r0/repository/rh/item-builder/index.html]]
+participant keyExtractor as "Key Extractor" [[r0/repository/rh/key-extractor/index.html]]
+participant Retriever [[r0/repository/rh/retriever/index.html]]
+database Store [[r0/repository/rh/store/index.html]]
+end box
 participant Generator [[r0/generator/index.html]]
 participant Responder [[r0/responder/index.html]]
-participant keyExtractor as "Key Extractor" [[r0/key-extractor/index.html]]
-participant Loader [[r0/loader/index.html]]
-database dataSources as "Data Sources" [[r0/data-sources/index.html]]
-database Store [[r0/store/index.html]]
 
 group Load
   Loader -> dataSources : read
-  Loader -> keyExtractor : generate key
-  Loader -> Store : store
+  Loader -> itemBuilder : add
+  itemBuilder -> keyExtractor : generate key
+  itemBuilder -> Store : store
 end
 
 group Retrieve & Generate
   User -> Requestor : question
-  Requestor -> queryEngine : query
-  queryEngine -> keyExtractor : generate query key
-  queryEngine -> Store : get matches
-  queryEngine -> queryEngine : sort by similarity
-  queryEngine --> Requestor : sorted store entries
+  Requestor -> Retriever : query
+  Retriever -> keyExtractor : generate query key
+  Retriever -> Store : get matches
+  Retriever -> Retriever : sort by similarity 
+  Retriever --> Requestor : sorted store entries
   Requestor -> Generator : question and query results
   Generator --> Requestor : summary
   Requestor -> Responder : question, query results, summary
@@ -65,19 +68,18 @@ Sources of data. There might be multiple solution building blocks with two prima
 Data items can be converted from one format to another. 
 As such data sources can be chained and composed. 
 
+
 ## Loader
 
-Loads data items keys and some data item identifier/locator to the store to make them discoverable by the query engine.
+Reads data items from data sources and adds them to the repository
 
-## Store
+## Repository
 
-Contains associations between data item keys and data items. 
-Data items can be stored by value or by reference. 
-The store can be indexed.
+### Item Builder
 
-A vector database is an example of an indexed store of embedding vectors.
+Creates store items from data items. For example, breaks down a document into sections and paragraphs. Computes embeddings (keys) and some item identifier/locator and adds items the store to make them discoverable by the retriever.
 
-## Key Extractor
+### Key Extractor
 
 Takes a data item of a fragment of it (say a paragraph from a text document) and computes a key. 
 The key is something that identifies the data item. 
@@ -94,7 +96,13 @@ Examples of keys:
     * DNA - shared DNA
     * Marital and social networks relationships - distance    
 
-## Query Engine
+### Store
+
+Contains associations between item keys (e.g. vector embeddings) and item identifiers.
+Data items can be stored by value or by reference. 
+The store can be indexed.
+
+### Retriever
 
 Computes query key and retrieves matching items from the store sorted by similarity.
 
@@ -121,7 +129,7 @@ A user (client) of a RAG solution - a human or a system.
 
 ## Resources
 
-* [Model documentation](model/)
+* [Model documentation](model/index.html)
 
 ## Roadmap
 
@@ -136,5 +144,6 @@ A user (client) of a RAG solution - a human or a system.
     * Memory-sensitive cache based on [Apache Commons Pool](https://commons.apache.org/proper/commons-pool/)
     * [Hazelcast](https://hazelcast.com/developers/clients/java/) based cache. Can be used in conjunction with [Hazecast Docker Image](https://hub.docker.com/r/hazelcast/hazelcast)
     * Other implementations as needed, e.g. RDBMS -> [H2](https://www.h2database.com/html/main.html), ...
+* Async/reactive implementation
 * User feedback collection - ranking of answers, providing the right answer (and then use similarity to choose the best of available)
 * Benchmarking

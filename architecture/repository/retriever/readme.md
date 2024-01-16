@@ -1,7 +1,11 @@
-Query engine is essentially ``Function<K,Iterable<R>>`` or ``BiFunction<K,ProgressMonitor,Iterable<R>>``
-where R provides access to the source URI and possibly similarity and some metadata.
+Retriever is essentially ``Function<K,Iterable<R>>`` or ``BiFunction<K,ProgressMonitor,Iterable<R>>``
+where R provides access to the source identifier (URI) and possibly similarity and some metadata.
 
 Similarity can be anything including null. There might be a comparator for similarities. For example, cosine similarity comparator.
+Similarity is a double between 0 and 1 with 1 meaning that two items are identical and 0 that there are not similar at all. 
+Another metric is distance, which is a non-negative number. Similarity may be defined as ``1 / (1 + distance)`` - if distance is 0 then similarity is 1. 
+If distance is large, similarity is small.
+
 For vectors take a look at https://github.com/jelmerk/hnswlib / https://mvnrepository.com/artifact/com.github.jelmerk/hnswlib-core-jdk17, take a look at embeddings4j - adapt if possible. 
 
 Hnswlib provides several distance metrics with cosine distance being one of them. 
@@ -29,5 +33,5 @@ TODO: Javadoc links to modules once published
 
 Excecutor to query engine? Or parallel flag? Iterable -> stream -> parallel
 
-
+Perhaps implement a caching retriever filter
 
