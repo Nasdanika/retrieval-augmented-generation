@@ -28,18 +28,40 @@ public class TestPdfBox {
 	@Test
 	public void testReadPdf() throws Exception {
 		
-		PDDocument document = Loader.loadPDF(new File("test.pdf"));		
+		PDDocument document = Loader.loadPDF(new File("test.pdf"));
 		
-        PDFTextStripperByArea stripper = new PDFTextStripperByArea();
-        stripper.setSortByPosition(true);
-        PDFTextStripper tStripper = new PDFTextStripper();
-
-        tStripper.setArticleStart("<article>" + System.lineSeparator());
-        tStripper.setArticleEnd("</article>" + System.lineSeparator());
+		PDFTextStripperByArea stripper = new PDFTextStripperByArea();
+		
+        PDFTextStripper tStripper = new PDFTextStripper() {
         
-        tStripper.setParagraphStart("<paragraph>" + System.lineSeparator());
-        tStripper.setParagraphEnd("</paragraph>" + System.lineSeparator());
+        	@Override
+        	public String getArticleStart() {
+        		return "<article page=\"" + getCurrentPageNo() + "\">" + System.lineSeparator();
+        	}
+        	
+        	@Override
+        	public String getArticleEnd() {
+        		return "</article>" + System.lineSeparator();
+        	}
+        	
+        	@Override
+        	public String getParagraphStart() {
+        		return "<paragraph page=\"" + getCurrentPageNo() + "\">" + System.lineSeparator();
+        	}
+        	
+        	@Override
+        	public String getParagraphEnd() {
+        		return "</paragraph>" + System.lineSeparator();
+        	}
+        	
+        	@Override
+        	public String getPageStart() {
+        		return "<page page=\"" + getCurrentPageNo() + "\"/>" + System.lineSeparator();
+        	}
+       	        	
+        };
         
+        tStripper.setSortByPosition(true);
         
         String pdfFileInText = tStripper.getText(document);
         System.out.println(pdfFileInText);
