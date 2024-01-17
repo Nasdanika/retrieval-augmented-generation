@@ -9,6 +9,7 @@ import java.util.Map;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.rag.core.KeyExtractor;
 import org.nasdanika.rag.core.StringDoubleVectorKeyExtractor;
+import org.nasdanika.rag.core.StringMapDoubleVectorKeyExtractor;
 
 import com.azure.ai.openai.OpenAIClient;
 import com.azure.ai.openai.models.EmbeddingItem;
@@ -49,11 +50,11 @@ public class OpenAIEmbeddingsKeyExtractor implements KeyExtractor<List<String>, 
 		return embeddings.getData().stream().map(EmbeddingItem::getEmbedding).toList();
 	}
 	
-	public StringDoubleVectorKeyExtractor asSingleton() {		
+	public StringDoubleVectorKeyExtractor asStringDoubleVectorKeyExtractor() {		
 		return (value, progressMonitor) -> extract(Collections.singletonList(value), progressMonitor).get(0);
 	}
 	
-	public KeyExtractor<Map<String,String>, Map<String,List<Double>>> asMap() {
+	public StringMapDoubleVectorKeyExtractor asStringMapDoubleVectorKeyExtractor() {
 		return (value, progressMonitor) -> {
 			List<String> keys = new ArrayList<>();
 			List<String> values = new ArrayList<>();
@@ -70,6 +71,24 @@ public class OpenAIEmbeddingsKeyExtractor implements KeyExtractor<List<String>, 
 			
 			return result;
 		};
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T extends KeyExtractor<?, ?>> T adapt(Class<T> type) {
+		if (type.isInstance(this)) {
+			return (T) this;
+		}
+		
+		if (type.isAssignableFrom(StringDoubleVectorKeyExtractor.class)) {
+			return (T) asStringDoubleVectorKeyExtractor();
+		}
+		
+		if (type.isAssignableFrom(StringMapDoubleVectorKeyExtractor.class)) {
+			return (T) asStringMapDoubleVectorKeyExtractor();
+		}
+
+		return KeyExtractor.super.adapt(type);
 	}
 
 }

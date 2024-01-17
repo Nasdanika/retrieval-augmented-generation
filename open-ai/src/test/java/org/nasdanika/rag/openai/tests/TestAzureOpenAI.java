@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.mapdb.DB;
+import org.mapdb.DBMaker;
+import org.mapdb.DBMaker.Maker;
+import org.mapdb.HTreeMap;
+import org.mapdb.Store;
 import org.nasdanika.common.PrintStreamProgressMonitor;
 import org.nasdanika.rag.openai.OpenAIEmbeddingsKeyExtractor;
 
@@ -75,7 +80,7 @@ public class TestAzureOpenAI {
 		String model = "text-embedding-ada-002";
 		OpenAIEmbeddingsKeyExtractor keyExtractor = new OpenAIEmbeddingsKeyExtractor(buildEmbeddingsClient(), model, null, null);
 		
-		List<Double> embedding = keyExtractor.asSingleton().extract("Hello world!", new PrintStreamProgressMonitor());
+		List<Double> embedding = keyExtractor.asStringDoubleVectorKeyExtractor().extract("Hello world!", new PrintStreamProgressMonitor());
 		System.out.println(embedding.size());
 	}	
 	

@@ -37,5 +37,14 @@ public interface KeyExtractor<V,K> {
 	default <U> KeyExtractor<U,K> before(BiFunction<U, ProgressMonitor, V> before) {
 		return (value, progressMonitor) -> extract(before.apply(value, progressMonitor), progressMonitor);
 	}
+	
+	@SuppressWarnings("unchecked")
+	default <T extends KeyExtractor<?,?>> T adapt(Class<T> type) {
+		if (type.isInstance(this)) {
+			return (T) this;
+		}
+		
+		throw new UnsupportedOperationException("Cannot adapt " + this + " to " + type);
+	}
 
 }
