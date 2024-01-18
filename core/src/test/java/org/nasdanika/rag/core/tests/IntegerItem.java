@@ -6,14 +6,20 @@ import com.github.jelmerk.knn.Item;
 public class IntegerItem implements Item<Integer, Integer> {
 	
 	private int value;
+	private int id;
+
+	public IntegerItem(int id, int value) {
+		this.id = id;
+		this.value = value;
+	}
 
 	public IntegerItem(int value) {
-		this.value = value;
+		this(value, value);
 	}
 
 	@Override
 	public Integer id() {
-		return value;
+		return id;
 	}
 
 	@Override

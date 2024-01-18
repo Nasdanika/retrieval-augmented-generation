@@ -33,9 +33,12 @@ public class TestHnswIndex {
         
         Random random = new SecureRandom();
         
-        for (int i = 0; i < 1000; ++i) {
+        for (int i = 0; i < 950; ++i) {
         	hnswIndex.add(new IntegerItem(i));
         }
+        
+    	hnswIndex.add(new IntegerItem(1812, 812));
+        
         
         Index<Integer, Integer, IntegerItem, Integer> exactIndex = hnswIndex.asExactIndex();
         
