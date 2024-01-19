@@ -3,14 +3,26 @@ package org.nasdanika.rag.openai.tests;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.nio.ByteBuffer;
+import java.nio.DoubleBuffer;
 import java.security.MessageDigest;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map.Entry;
+import java.util.function.Function;
 import java.util.zip.GZIPOutputStream;
+import java.util.zip.ZipFile;
+import java.util.zip.ZipOutputStream;
 
 import org.apache.commons.codec.binary.Hex;
+import org.json.JSONArray;
 import org.junit.jupiter.api.Test;
 import org.nasdanika.common.PrintStreamProgressMonitor;
+import org.nasdanika.rag.core.ArrayListZipEntryStore;
+import org.nasdanika.rag.core.Store;
+import org.nasdanika.rag.core.Store.SearchResult;
 import org.nasdanika.rag.openai.OpenAIEmbeddingsKeyExtractor;
 
 import com.azure.ai.openai.OpenAIClient;
@@ -129,6 +141,42 @@ public class TestAzureOpenAI {
 		byte[] bytes = baos.toByteArray();
 		String digest = Hex.encodeHexString(MessageDigest.getInstance("SHA-256").digest(bytes));
 		Files.write(bytes, new File("target/" + digest + ".gz"));
+	}	
+	
+	@Test
+	public void testStoringOpenAIEmbeddings() throws Exception {
+		String model = "text-embedding-ada-002";
+		OpenAIEmbeddingsKeyExtractor keyExtractor = new OpenAIEmbeddingsKeyExtractor(buildEmbeddingsClient(), model, null, null);
+		
+		List<Double> embedding = keyExtractor.asStringDoubleVectorKeyExtractor().extract("Hello world!", new PrintStreamProgressMonitor());		
+		System.out.println(embedding.size());
+		
+		ArrayListZipEntryStore store = new ArrayListZipEntryStore();
+		PrintStreamProgressMonitor progressMonitor = new PrintStreamProgressMonitor();
+		
+		Function<List<Double>, byte[]> keyEncoder = dList -> {
+			ByteBuffer buf = ByteBuffer.allocate(dList.size() * Double.BYTES);
+			dList.forEach(buf::putDouble);
+			return buf.array();
+		};
+		
+		Function<List<String>, String> valueEncoder = vList -> {
+			JSONArray jsonArray = new JSONArray();
+			vList.forEach(jsonArray::put);
+			return jsonArray.toString();
+		};
+		
+		Store<List<Double>, List<String>, Integer> adapter = store.adapt(keyEncoder, valueEncoder, null, null); // Don't need decoders - not reading this store
+		
+		adapter.add(embedding, Collections.singletonList("@myVal"), progressMonitor);
+		
+		String fileName = "target/my-embeddings-store.zip";
+		store.save(new ZipOutputStream(new FileOutputStream(fileName)));
+		
+		store = new ArrayListZipEntryStore(new ZipFile(fileName));
+		for (Entry<byte[], String> result: store.getEntries()) {
+			System.out.println(result.getValue() + " "  + result.getKey().length);
+		}
 	}	
 	
 }

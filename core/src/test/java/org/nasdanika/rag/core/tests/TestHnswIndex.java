@@ -29,10 +29,8 @@ public class TestHnswIndex {
                 .withM(16)
                 .withEf(200)
                 .withEfConstruction(200)
-                .build();		
-        
-        Random random = new SecureRandom();
-        
+                .build();	
+                
         for (int i = 0; i < 950; ++i) {
         	hnswIndex.add(new IntegerItem(i));
         }
