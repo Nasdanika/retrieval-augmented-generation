@@ -3,26 +3,38 @@ package org.nasdanika.rag.openai.tests;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.nio.ByteBuffer;
-import java.nio.DoubleBuffer;
 import java.security.MessageDigest;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.function.Function;
 import java.util.zip.GZIPOutputStream;
 import java.util.zip.ZipFile;
+import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 import org.apache.commons.codec.binary.Hex;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.json.JSONArray;
 import org.junit.jupiter.api.Test;
 import org.nasdanika.common.PrintStreamProgressMonitor;
+import org.nasdanika.models.pdf.Document;
+import org.nasdanika.models.pdf.util.PdfTextResourceFactory;
 import org.nasdanika.rag.core.ArrayListZipEntryStore;
-import org.nasdanika.rag.core.Store;
+import org.nasdanika.rag.core.PdfTextSplitter;
+import org.nasdanika.rag.core.PdfTextSplitter.Chunk;
 import org.nasdanika.rag.core.Store.SearchResult;
+import org.nasdanika.rag.core.Store;
+import org.nasdanika.rag.core.StringDoubleVectorKeyExtractor;
 import org.nasdanika.rag.openai.OpenAIEmbeddingsKeyExtractor;
 
 import com.azure.ai.openai.OpenAIClient;
@@ -38,6 +50,10 @@ import com.azure.ai.openai.models.ChatResponseMessage;
 import com.azure.ai.openai.models.CompletionsUsage;
 import com.azure.core.credential.KeyCredential;
 import com.google.common.io.Files;
+import com.knuddels.jtokkit.Encodings;
+import com.knuddels.jtokkit.api.Encoding;
+import com.knuddels.jtokkit.api.EncodingRegistry;
+import com.knuddels.jtokkit.api.EncodingType;
 
 public class TestAzureOpenAI {
 		
@@ -178,5 +194,89 @@ public class TestAzureOpenAI {
 			System.out.println(result.getValue() + " "  + result.getKey().length);
 		}
 	}	
+	
+	@Test
+	public void testStoringPdfTextEmbeddings() throws Exception {
+		// Key extractor
+		String model = "text-embedding-ada-002";
+		StringDoubleVectorKeyExtractor keyExtractor = new OpenAIEmbeddingsKeyExtractor(buildEmbeddingsClient(), model, null, null).asStringDoubleVectorKeyExtractor();
+		
+		// Store
+		ArrayListZipEntryStore store = new ArrayListZipEntryStore();
+		
+		Function<List<Double>, byte[]> keyEncoder = dList -> {
+			ByteBuffer buf = ByteBuffer.allocate(dList.size() * Double.BYTES);
+			dList.forEach(buf::putDouble);
+			return buf.array();
+		};
+		
+		Function<List<String>, String> valueEncoder = vList -> {
+			JSONArray jsonArray = new JSONArray();
+			vList.forEach(jsonArray::put);
+			return jsonArray.toString();
+		};
+		
+		Store<List<Double>, List<String>, Integer> adapter = store.adapt(keyEncoder, valueEncoder, null, null); // Don't need decoders - not reading this store
+
+		// Splitter
+		EncodingRegistry registry = Encodings.newDefaultEncodingRegistry();
+		Encoding enc = registry.getEncoding(EncodingType.CL100K_BASE);
+		
+		PdfTextSplitter pdfTextSplitter = new PdfTextSplitter(
+				1000, 
+				50, 
+				20, 
+				s -> enc
+					.encode(s)
+					.stream()
+					.map(token -> enc.decode(Collections.singletonList(token)))
+					.toList());
+		
+		ResourceSet resourceSet = new ResourceSetImpl();
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("pdf", new PdfTextResourceFactory());
+		File test = new File("test.pdf").getCanonicalFile();		
+		URI resourceURI = URI.createFileURI(test.getCanonicalFile().getAbsolutePath());
+//		URI resourceURI = URI.createFileURI(TEST.getCanonicalFile().getAbsolutePath());
+		Resource pdfTextResource = resourceSet.getResource(resourceURI, true);
+		PrintStreamProgressMonitor progressMonitor = new PrintStreamProgressMonitor();
+		for (EObject root: pdfTextResource.getContents()) {
+			Document modelDocument = (Document) root;
+			List<Chunk> chunks = pdfTextSplitter.split(modelDocument);
+			System.out.println(chunks.size());
+			for (Chunk chunk: chunks) {
+				List<EObject> sources = chunk.getSources();
+				if (!sources.isEmpty()) {
+					List<Double> embedding = keyExtractor.extract("Hello world!", progressMonitor);
+					List<String> range = new ArrayList<>();					
+					EObject start = sources.get(0);
+					range.add(pdfTextResource.getURIFragment(start));
+					if (sources.size() > 1) {
+						EObject end = sources.get(sources.size() - 1);
+						range.add(pdfTextResource.getURIFragment(end));
+					}					
+					adapter.add(embedding, range, progressMonitor);
+				}
+			}
+		}
+		
+		String fileName = "target/test-pdf-embeddings.zip";
+		store.save(new ZipOutputStream(new FileOutputStream(fileName)));
+		
+		store = new ArrayListZipEntryStore(new ZipFile(fileName));
+	}
+	
+	/**
+	 * A basic test to see how indexing works
+	 * @throws Exception
+	 */
+	@Test
+	public void testLoadPdfEmbeddingsStore() throws Exception {
+		String fileName = "target/test-pdf-embeddings.zip";
+		ArrayListZipEntryStore store = new ArrayListZipEntryStore(new ZipInputStream(new FileInputStream(fileName)));
+		for (Entry<byte[], String> entry: store.getEntries()) {
+			System.out.println(entry.getValue() + " " + entry.getKey().length);
+		}
+		
+	}
 	
 }
