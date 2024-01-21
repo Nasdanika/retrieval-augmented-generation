@@ -36,6 +36,11 @@
 			<artifactId>common</artifactId>
 			<version>${core.version}</version>
 		</dependency>		
+		<dependency>
+			<groupId>org.nasdanika.models.pdf</groupId>
+			<artifactId>model</artifactId>
+			<version>2024.1.0</version>
+		</dependency>		
 	</dependencies>
 </project>
 

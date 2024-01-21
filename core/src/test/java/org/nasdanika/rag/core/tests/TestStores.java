@@ -13,11 +13,9 @@ import org.nasdanika.common.PrintStreamProgressMonitor;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.rag.core.ArrayListZipEntryStore;
 import org.nasdanika.rag.core.IndexStore;
-import org.nasdanika.rag.core.IndexStore.IndexItem;
 import org.nasdanika.rag.core.Store.SearchResult;
 
 import com.github.jelmerk.knn.DistanceFunction;
-import com.github.jelmerk.knn.Index;
 import com.github.jelmerk.knn.bruteforce.BruteForceIndex;
 import com.github.jelmerk.knn.hnsw.HnswIndex;
 

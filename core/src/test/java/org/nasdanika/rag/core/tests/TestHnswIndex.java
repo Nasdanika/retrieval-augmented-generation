@@ -2,9 +2,7 @@ package org.nasdanika.rag.core.tests;
 
 
 import java.io.File;
-import java.security.SecureRandom;
 import java.util.List;
-import java.util.Random;
 
 import org.junit.jupiter.api.Test;
 
