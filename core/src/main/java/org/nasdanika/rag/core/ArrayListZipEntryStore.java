@@ -42,6 +42,9 @@ public class ArrayListZipEntryStore extends ZipEntryStore<Integer> {
 		return entries;
 	}
 
+	/**
+	 * Longer vector is greater. For the same size - Manhattan distance.
+	 */
 	@Override
 	protected Integer distance(byte[] a, byte[] b) {
 		int ld = a.length - b.length;
