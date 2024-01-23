@@ -14,9 +14,7 @@ import java.util.function.Function;
 
 import org.eclipse.emf.ecore.EObject;
 import org.nasdanika.models.pdf.Document;
-import org.nasdanika.models.pdf.Line;
 import org.nasdanika.models.pdf.Paragraph;
-import org.nasdanika.models.pdf.Word;
 
 /**
  * Extracts text from PDF and splits into chunks.
@@ -85,25 +83,6 @@ public class PdfTextSplitter {
 	
 	protected String getParagraphSeparator() {
 		return getLineSeparator() + getLineSeparator();
-	}
-	
-	protected String getParagraphText(Paragraph paragraph) {
-		StringBuilder ret = new StringBuilder();
-		for (Line line: paragraph.getLines()) {
-			if (ret.length() > 0) {
-				ret.append(getLineSeparator());
-			}
-			
-			StringBuilder lineBuilder = new StringBuilder();
-			for (Word word: line.getWords()) {
-				if (lineBuilder.length() > 0) {
-					lineBuilder.append(getWordSeparator());
-				}
-				lineBuilder.append(word.getText());
-			}
-			ret.append(lineBuilder);
-		}
-		return ret.toString();
 	}
 	
 	private static record WordRecord(int id, String text, List<String> tokens, Paragraph paragraph) {} 
@@ -302,7 +281,7 @@ public class PdfTextSplitter {
 				.flatMap(p -> p.getArticles().stream())
 				.flatMap(a -> a.getParagraphs().stream())
 				.map(p -> {
-					String text = getParagraphText(p);
+					String text = p.getText(getLineSeparator(), getWordSeparator());
 					return new ParagraphRecord(
 							counter[0]++,
 							text, 

@@ -37,7 +37,7 @@ import org.nasdanika.rag.processors.ecore.EcoreGenRagProcessorsFactory;
  * @author Pavel
  *
  */
-public class TestExcelModelDocGen {
+public class TestRaglModelDocGen {
 	
 	@Test
 	public void testGenerateRagModelDoc() throws IOException, DiagnosticException {
