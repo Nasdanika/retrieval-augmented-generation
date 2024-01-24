@@ -8,9 +8,10 @@ import java.io.FileOutputStream;
 import java.nio.ByteBuffer;
 import java.security.MessageDigest;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Function;
 import java.util.zip.GZIPOutputStream;
@@ -32,9 +33,9 @@ import org.nasdanika.models.pdf.util.PdfTextResourceFactory;
 import org.nasdanika.rag.core.ArrayListZipEntryStore;
 import org.nasdanika.rag.core.PdfTextSplitter;
 import org.nasdanika.rag.core.PdfTextSplitter.Chunk;
-import org.nasdanika.rag.core.Store.SearchResult;
 import org.nasdanika.rag.core.Store;
 import org.nasdanika.rag.core.StringDoubleVectorKeyExtractor;
+import org.nasdanika.rag.core.StringMapDoubleVectorKeyExtractor;
 import org.nasdanika.rag.openai.OpenAIEmbeddingsKeyExtractor;
 
 import com.azure.ai.openai.OpenAIClient;
@@ -246,7 +247,7 @@ public class TestAzureOpenAI {
 			for (Chunk chunk: chunks) {
 				List<EObject> sources = chunk.getSources();
 				if (!sources.isEmpty()) {
-					List<Double> embedding = keyExtractor.extract("Hello world!", progressMonitor);
+					List<Double> embedding = keyExtractor.extract(chunk.getText(), progressMonitor);
 					List<String> range = new ArrayList<>();					
 					EObject start = sources.get(0);
 					range.add(pdfTextResource.getURIFragment(start));
@@ -264,6 +265,80 @@ public class TestAzureOpenAI {
 		
 		store = new ArrayListZipEntryStore(new ZipFile(fileName));
 	}
+	
+	/**
+	 * Retrieving multiple embeddings in one call
+	 * @throws Exception
+	 */
+	@Test
+	public void testStoringPdfTextBatchEmbeddings() throws Exception {
+		// Key extractor
+		String model = "text-embedding-ada-002";
+		StringMapDoubleVectorKeyExtractor keyExtractor = new OpenAIEmbeddingsKeyExtractor(buildEmbeddingsClient(), model, null, null).asStringMapDoubleVectorKeyExtractor();
+		
+		// Store
+		ArrayListZipEntryStore store = new ArrayListZipEntryStore();
+		
+		Function<List<Double>, byte[]> keyEncoder = dList -> {
+			ByteBuffer buf = ByteBuffer.allocate(dList.size() * Double.BYTES);
+			dList.forEach(buf::putDouble);
+			return buf.array();
+		};
+		
+		Store<List<Double>, String, Integer> adapter = store.adapt(keyEncoder, v -> v, null, null); // Don't need decoders - not reading this store
+
+		// Splitter
+		EncodingRegistry registry = Encodings.newDefaultEncodingRegistry();
+		Encoding enc = registry.getEncoding(EncodingType.CL100K_BASE);
+		
+		PdfTextSplitter pdfTextSplitter = new PdfTextSplitter(
+				1000, 
+				50, 
+				20, 
+				s -> enc
+					.encode(s)
+					.stream()
+					.map(token -> enc.decode(Collections.singletonList(token)))
+					.toList());
+		
+		ResourceSet resourceSet = new ResourceSetImpl();
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("pdf", new PdfTextResourceFactory());
+		File test = new File("test.pdf").getCanonicalFile();		
+		URI resourceURI = URI.createFileURI(test.getCanonicalFile().getAbsolutePath());
+//		URI resourceURI = URI.createFileURI(TEST.getCanonicalFile().getAbsolutePath());
+		Resource pdfTextResource = resourceSet.getResource(resourceURI, true);
+		PrintStreamProgressMonitor progressMonitor = new PrintStreamProgressMonitor();
+		for (EObject root: pdfTextResource.getContents()) {
+			Document modelDocument = (Document) root;
+			List<Chunk> chunks = pdfTextSplitter.split(modelDocument);
+			System.out.println(chunks.size());
+			Map<String,String> chunkMap = new LinkedHashMap<>();
+			for (Chunk chunk: chunks) {
+				List<EObject> sources = chunk.getSources();
+				if (!sources.isEmpty()) {
+					JSONArray range = new JSONArray();				
+					EObject start = sources.get(0);
+					range.put(pdfTextResource.getURIFragment(start));
+					if (sources.size() > 1) {
+						EObject end = sources.get(sources.size() - 1);
+						range.put(pdfTextResource.getURIFragment(end));
+					}
+					chunkMap.put(range.toString(), chunk.getText());
+				}
+			}
+			
+			Map<String, List<Double>> embeddings = keyExtractor.extract(chunkMap, progressMonitor);
+			for (Entry<String, List<Double>> ee: embeddings.entrySet()) {
+				adapter.add(ee.getValue(), ee.getKey(), progressMonitor);				
+			}
+		}
+		
+		String fileName = "target/test-pdf-batch-embeddings.zip";
+		store.save(new ZipOutputStream(new FileOutputStream(fileName)));
+		
+		store = new ArrayListZipEntryStore(new ZipFile(fileName));
+	}
+	
 	
 	/**
 	 * A basic test to see how indexing works
