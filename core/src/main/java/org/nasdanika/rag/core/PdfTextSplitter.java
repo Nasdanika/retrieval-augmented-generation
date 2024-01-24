@@ -311,7 +311,7 @@ public class PdfTextSplitter {
 		for (int i = 0; i < paragraphs.size(); ++i) {
 			ChunkImpl chunk = (ChunkImpl) chunks.getLast();
 			ParagraphRecord paragraph = paragraphs.get(i);
-			if (paragraph.size() + chunk.size() < size) {
+			if (paragraph.size() + chunk.size() + tokenizer.apply(getParagraphSeparator()).size() < size) {
 				// Paragraph fits into the chunk
 				chunk.add(paragraph);
 			} else {
