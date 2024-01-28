@@ -16,11 +16,6 @@
 			<artifactId>processors</artifactId>
 			<version>${project.version}</version>
 		</dependency>		
-		<dependency>
-			<groupId>org.nasdanika</groupId>
-			<artifactId>plantuml-diagram-generator</artifactId>
-			<version>2023.12.1</version>
-		</dependency>
 	</dependencies>
 </project>
 
