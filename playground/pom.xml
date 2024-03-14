@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.nasdanika.rag</groupId>
-		<version>2024.1.0</version>
+		<version>2024.3.0</version>
 		<artifactId>parent</artifactId>
 		<relativePath>..</relativePath>
 	</parent>
@@ -15,12 +15,12 @@
 		<dependency>
 		    <groupId>com.azure</groupId>
 		    <artifactId>azure-ai-openai</artifactId>
-		    <version>1.0.0-beta.6</version>
+		    <version>1.0.0-beta.7</version>
 		</dependency>
 		<dependency>
 			<groupId>org.nasdanika.rag</groupId>
 			<artifactId>core</artifactId>
-			<version>2024.1.0</version>
+			<version>2024.3.0</version>
 		</dependency>
 	</dependencies>
 </project>

@@ -70,7 +70,8 @@ public interface Store<K,V,D> {
 					if (o == this) {
 						return 0;
 					}
-					if (o instanceof SearchResultAdapter) {
+					
+					if (SearchResultAdapter.class.isInstance(o)) {
 						return target.compareTo(((SearchResultAdapter) o).target);
 					}
 					throw new IllegalArgumentException();

@@ -1,7 +1,6 @@
 package org.nasdanika.rag.core.tests;
 
 import java.io.File;
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
@@ -19,6 +18,7 @@ import com.knuddels.jtokkit.Encodings;
 import com.knuddels.jtokkit.api.Encoding;
 import com.knuddels.jtokkit.api.EncodingRegistry;
 import com.knuddels.jtokkit.api.EncodingType;
+import com.knuddels.jtokkit.api.IntArrayList;
 
 public class TestPdfTextSplitter {
 	
@@ -35,8 +35,13 @@ public class TestPdfTextSplitter {
 				20, 
 				s -> enc
 					.encode(s)
+					.boxed()
 					.stream()
-					.map(token -> enc.decode(Collections.singletonList(token)))
+					.map(token -> {
+						IntArrayList tokens = new IntArrayList();
+						tokens.add(token);
+						return enc.decode(tokens);						
+					})
 					.toList());
 		
 		ResourceSet resourceSet = new ResourceSetImpl();

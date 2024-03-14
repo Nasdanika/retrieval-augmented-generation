@@ -70,189 +70,9 @@ window.nsdJsTreeSearchCallback = function(str, node) {
 			  }
 			}));
 </script>
-
-<script src="../../../../search-documents.js"></script>
-
-<script src="https://cdn.jsdelivr.net/gh/olivernn/lunr.js@v2.3.9/lunr.js"></script>
-
-<script>
-// Script for full-text search of JsTree
-
-window.nsdJsTreeSearchCallback = function(str, node) { 
-    var sf = new $.vakata.search(str, true, { caseSensitive : false, fuzzy : false }); 
-    if (sf.search(node.text).isMatch) {
-		return true;
-	} 
-    let searchResult = this.search(str); 
-    for (const sr in searchResult) {
-        if (searchResult[sr].ref === node.original['data-nsd-label-uuid']) {
-            return true;
-        } 
-    } 
-    return false; 
-}.bind(lunr(function () {
-			  this.ref('id');
-			  this.field('title');
-			  this.field('content');
-
-			  for (const key in searchDocuments) {
-				  let doc = searchDocuments[key];
-				this.add({
-					id: doc['action-uuid'],
-					title: doc.title,
-					path: doc.path,
-					content: doc.content
-				});  
-			  }
-			}));
-</script>
-
-<script src="../../../../search-documents.js"></script>
-
-<script src="https://cdn.jsdelivr.net/gh/olivernn/lunr.js@v2.3.9/lunr.js"></script>
-
-<script>
-// Script for full-text search of JsTree
-
-window.nsdJsTreeSearchCallback = function(str, node) { 
-    var sf = new $.vakata.search(str, true, { caseSensitive : false, fuzzy : false }); 
-    if (sf.search(node.text).isMatch) {
-		return true;
-	} 
-    let searchResult = this.search(str); 
-    for (const sr in searchResult) {
-        if (searchResult[sr].ref === node.original['data-nsd-label-uuid']) {
-            return true;
-        } 
-    } 
-    return false; 
-}.bind(lunr(function () {
-			  this.ref('id');
-			  this.field('title');
-			  this.field('content');
-
-			  for (const key in searchDocuments) {
-				  let doc = searchDocuments[key];
-				this.add({
-					id: doc['action-uuid'],
-					title: doc.title,
-					path: doc.path,
-					content: doc.content
-				});  
-			  }
-			}));
-</script>
-
-<script src="../../../../search-documents.js"></script>
-
-<script src="https://cdn.jsdelivr.net/gh/olivernn/lunr.js@v2.3.9/lunr.js"></script>
-
-<script>
-// Script for full-text search of JsTree
-
-window.nsdJsTreeSearchCallback = function(str, node) { 
-    var sf = new $.vakata.search(str, true, { caseSensitive : false, fuzzy : false }); 
-    if (sf.search(node.text).isMatch) {
-		return true;
-	} 
-    let searchResult = this.search(str); 
-    for (const sr in searchResult) {
-        if (searchResult[sr].ref === node.original['data-nsd-label-uuid']) {
-            return true;
-        } 
-    } 
-    return false; 
-}.bind(lunr(function () {
-			  this.ref('id');
-			  this.field('title');
-			  this.field('content');
-
-			  for (const key in searchDocuments) {
-				  let doc = searchDocuments[key];
-				this.add({
-					id: doc['action-uuid'],
-					title: doc.title,
-					path: doc.path,
-					content: doc.content
-				});  
-			  }
-			}));
-</script>
-
-<script src="../../../../search-documents.js"></script>
-
-<script src="https://cdn.jsdelivr.net/gh/olivernn/lunr.js@v2.3.9/lunr.js"></script>
-
-<script>
-// Script for full-text search of JsTree
-
-window.nsdJsTreeSearchCallback = function(str, node) { 
-    var sf = new $.vakata.search(str, true, { caseSensitive : false, fuzzy : false }); 
-    if (sf.search(node.text).isMatch) {
-		return true;
-	} 
-    let searchResult = this.search(str); 
-    for (const sr in searchResult) {
-        if (searchResult[sr].ref === node.original['data-nsd-label-uuid']) {
-            return true;
-        } 
-    } 
-    return false; 
-}.bind(lunr(function () {
-			  this.ref('id');
-			  this.field('title');
-			  this.field('content');
-
-			  for (const key in searchDocuments) {
-				  let doc = searchDocuments[key];
-				this.add({
-					id: doc['action-uuid'],
-					title: doc.title,
-					path: doc.path,
-					content: doc.content
-				});  
-			  }
-			}));
-</script>
-
-<script src="../../../../search-documents.js"></script>
-
-<script src="https://cdn.jsdelivr.net/gh/olivernn/lunr.js@v2.3.9/lunr.js"></script>
-
-<script>
-// Script for full-text search of JsTree
-
-window.nsdJsTreeSearchCallback = function(str, node) { 
-    var sf = new $.vakata.search(str, true, { caseSensitive : false, fuzzy : false }); 
-    if (sf.search(node.text).isMatch) {
-		return true;
-	} 
-    let searchResult = this.search(str); 
-    for (const sr in searchResult) {
-        if (searchResult[sr].ref === node.original['data-nsd-label-uuid']) {
-            return true;
-        } 
-    } 
-    return false; 
-}.bind(lunr(function () {
-			  this.ref('id');
-			  this.field('title');
-			  this.field('content');
-
-			  for (const key in searchDocuments) {
-				  let doc = searchDocuments[key];
-				this.add({
-					id: doc['action-uuid'],
-					title: doc.title,
-					path: doc.path,
-					content: doc.content
-				});  
-			  }
-			}));
-</script>
 </head>
   <body>
-    <div tabindex="-1" id="nsd_69" class="modal">
+    <div tabindex="-1" id="nsd_6n" class="modal">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-body">Hover mouse over nodes elements to display tooltips.
@@ -265,14 +85,14 @@ Drag to rearrange, nodes will not stay in place once released.
     <div class="container-fluid nsd-app-container">
       <div class="row">
         <div class="col nsd-app-header">
-          <a href="https://rag.nasdanika.org/" data-nsd-label-uuid="b8cd9a78-0dff-4d55-be2d-b1480c1e4ada" class="nsd-app-header-title">
+          <a href="https://rag.nasdanika.org/" data-nsd-label-uuid="ab8d55e2-fb05-41b4-b2ee-dfb638da1550" class="nsd-app-header-title">
             <img src="https://docs.nasdanika.org/images/nasdanika-logo.png" class="nsd-app-label-icon">Nasdanika RAG</a>
           <ul class="nav nsd-app-header-navs">
             <li class="nav-item">
-              <a href="../../../search.html" data-nsd-label-uuid="74eb205c-8bbd-494f-8305-87fc7eeaba3e" class="nav-link"><span class="fas fa-search nsd-app-label-icon"></span>Search</a>
+              <a href="../../../search.html" data-nsd-label-uuid="33995df8-ffd2-46f5-805a-3a647c7d61c8" class="nav-link"><span class="fas fa-search nsd-app-label-icon"></span>Search</a>
             </li>
             <li class="nav-item">
-              <a href="../../../glossary.html" data-nsd-label-uuid="f382bb88-c34e-4e00-b255-6cdc04996246" class="nav-link"><span class="fas fa-book nsd-app-label-icon"></span>Glossary</a>
+              <a href="../../../glossary.html" data-nsd-label-uuid="62fa8957-449a-4dbe-a17e-b91e951b512c" class="nav-link"><span class="fas fa-book nsd-app-label-icon"></span>Glossary</a>
             </li>
           </ul>
         </div>
@@ -280,30 +100,30 @@ Drag to rearrange, nodes will not stay in place once released.
       <div class="row">
         <div class="col nsd-app-navbar">
           <ul class="navbar navbar-light navbar-expand-lg">
-            <a href="../../../index.html" data-nsd-label-uuid="592b9022-3f12-4035-8be3-18432892e9ff" class="navbar-brand">
+            <a href="../../../index.html" data-nsd-label-uuid="1dd88b78-2592-4e59-897a-4b61c76a1634" class="navbar-brand">
               <img src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EPackage.gif" class="nsd-app-label-icon">model</a>
-            <button type="button" data-toggle="collapse" data-target="#nsd_64" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span>
+            <button type="button" data-toggle="collapse" data-target="#nsd_6i" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span>
             </button>
-            <div id="nsd_64" class="collapse navbar-collapse">
+            <div id="nsd_6i" class="collapse navbar-collapse">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                  <a href="../../../classifiers.html" data-nsd-label-uuid="b67b8fe9-32ae-4323-b016-4c5f32f5533c" class="nav-link">Classifiers</a>
+                  <a href="../../../classifiers.html" data-nsd-label-uuid="e9a0ee83-9408-4109-9086-53324d15ea77" class="nav-link">Classifiers</a>
                 </li>
                 <li class="nav-item">
-                  <a href="../../../diagram.html" data-nsd-label-uuid="2cc8d73f-92c8-4104-a3be-fd1a815c8d0f" class="nav-link"><span class="fas fa-project-diagram nsd-app-label-icon"></span>Diagram</a>
+                  <a href="../../../diagram.html" data-nsd-label-uuid="a4e82833-628b-4a30-a9c1-d9e0e9f4c190" class="nav-link"><span class="fas fa-project-diagram nsd-app-label-icon"></span>Diagram</a>
                 </li>
                 <li class="nav-item">
-                  </li><li data-nsd-label-uuid="3cb2c1b3-6853-4486-a99d-588cc71e1efd" class="dropdown">
+                  </li><li data-nsd-label-uuid="ac5c5474-e418-43f9-b45c-ef1791ba1e7a" class="dropdown">
                     <a role="button" data-toggle="dropdown" class="nav-link dropdown-toggle">
                       <img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/16/external-diagram-seo-media-dreamstale-lineal-dreamstale.png" class="nsd-app-label-icon">Graphs</a>
                     <div class="dropdown-menu">
-                      <a href="../../../default-graph.html" data-nsd-label-uuid="531b5dcd-cacb-42ea-87f4-fb38bb23da48" class="dropdown-item">Default Graph</a>
-                      <a href="../../../circular-layout-graph.html" data-nsd-label-uuid="d719c75b-41d8-479d-a48b-7e47e0d14025" class="dropdown-item">Circular Graph</a>
-                      <a href="../../../force-layout-graph.html" data-nsd-label-uuid="08221ddf-94f9-464c-893d-972cd29b9c5f" class="dropdown-item">Force Graph</a>
+                      <a href="../../../default-graph.html" data-nsd-label-uuid="456a4194-2c21-46af-a6f1-a2ad685a2de8" class="dropdown-item">Default Graph</a>
+                      <a href="../../../circular-layout-graph.html" data-nsd-label-uuid="90a554ab-372f-4e40-9a75-0c3f1f8b2660" class="dropdown-item">Circular Graph</a>
+                      <a href="../../../force-layout-graph.html" data-nsd-label-uuid="1314c461-d48c-467a-a194-940f77d15eb9" class="dropdown-item">Force Graph</a>
                       <div title="With dependencies and sub-packages" class="dropdown-divider"></div>
-                      <a href="../../../default-graph-with-dependencies-and-subpackages.html" data-nsd-label-uuid="5fbadca1-38c4-4aad-8a4d-ccfb562b275c" class="dropdown-item">Default Graph</a>
-                      <a href="../../../circular-layout-graph-with-dependencies-and-subpackages.html" data-nsd-label-uuid="9205ec97-b77d-416b-b564-fe5b356f904e" class="dropdown-item">Circular Graph</a>
-                      <a href="../../../force-layout-graph-with-dependencies-and-subpackages.html" data-nsd-label-uuid="d2033cd3-0c42-456c-9a9c-7717e9a077fe" class="dropdown-item">Force Graph</a>
+                      <a href="../../../default-graph-with-dependencies-and-subpackages.html" data-nsd-label-uuid="9cfdd31f-eaa3-4442-9889-1bd66bc62a37" class="dropdown-item">Default Graph</a>
+                      <a href="../../../circular-layout-graph-with-dependencies-and-subpackages.html" data-nsd-label-uuid="97607efb-1407-4998-be2c-a059007fcbc8" class="dropdown-item">Circular Graph</a>
+                      <a href="../../../force-layout-graph-with-dependencies-and-subpackages.html" data-nsd-label-uuid="e6e89726-8d12-49df-9023-4ef93528d9c3" class="dropdown-item">Force Graph</a>
                     </div>
                   </li>
                 
@@ -315,29 +135,29 @@ Drag to rearrange, nodes will not stay in place once released.
       <div class="row nsd-app-content-row">
         <div class="col nsd-app-navigation-panel">
           <div class="list-group list-group-flush">
-            <a href="index.html" title="DoubleVectorStringStore item - a mapping of String id to a double vector." data-nsd-label-uuid="032448af-7041-4aa0-b128-8a1dc42bda2f" class="list-group-item list-group-action active">
+            <a href="index.html" title="DoubleVectorStringStore item - a mapping of String id to a double vector." data-nsd-label-uuid="91faebe0-5ab2-4188-a3ca-2108caca65fb" class="list-group-item list-group-action active">
               <img src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EClass.gif" class="nsd-app-label-icon">DoubleVectorStringItem</a>
-            <a href="../DoubleVectorStringStore/index.html" title="Stores double vectors identified by strrings (URI's)" data-nsd-label-uuid="d27284e7-16e5-48cf-b6d4-4f9b061e2b5e" class="list-group-item list-group-action">
+            <a href="../DoubleVectorStringStore/index.html" title="Stores double vectors identified by strrings (URI's)" data-nsd-label-uuid="295f074e-ec92-4964-b2e7-83be3f20de9a" class="list-group-item list-group-action">
               <img src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EClass.gif" class="nsd-app-label-icon">DoubleVectorStringStore</a>
-            <a href="../FloatVectorStringItem/index.html" title="FloatVectorStringStore item - a mapping of String id to a float vector." data-nsd-label-uuid="551d4821-ad89-4477-a5c3-0f23c849bbdd" class="list-group-item list-group-action">
+            <a href="../FloatVectorStringItem/index.html" title="FloatVectorStringStore item - a mapping of String id to a float vector." data-nsd-label-uuid="2be0dcc1-65b9-4ae1-8a54-d50d252e695f" class="list-group-item list-group-action">
               <img src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EClass.gif" class="nsd-app-label-icon">FloatVectorStringItem</a>
-            <a href="../FloatVectorStringStore/index.html" title="Stores float vectors identified by strrings (URI's)" data-nsd-label-uuid="bd4a80b2-9621-4e4d-9f3c-1ea767c53c46" class="list-group-item list-group-action">
+            <a href="../FloatVectorStringStore/index.html" title="Stores float vectors identified by strrings (URI's)" data-nsd-label-uuid="b9209d52-dedd-475d-9c48-206c277013bf" class="list-group-item list-group-action">
               <img src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EClass.gif" class="nsd-app-label-icon">FloatVectorStringStore</a>
           </div>
         </div>
-        <div data-nsd-label-uuid="28720409-50db-4f0c-b32d-e9983f94a4c2" data-nsd-action-uris="uuid:28720409-50db-4f0c-b32d-e9983f94a4c2" class="col nsd-app-content-panel">
+        <div data-nsd-label-uuid="4e7ef925-3f7c-4c31-8ab2-349b8b26441a" data-nsd-action-uris="uuid:4e7ef925-3f7c-4c31-8ab2-349b8b26441a" class="col nsd-app-content-panel">
           <div class="container-fluid">
             <div class="row nsd-app-content-panel-breadcrumb-row">
               <div class="col">
                 <nav aria-label="breadcrumb" class="nsd-app-content-panel-breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                      <a href="index.html" title="DoubleVectorStringStore item - a mapping of String id to a double vector." data-nsd-label-uuid="032448af-7041-4aa0-b128-8a1dc42bda2f">
+                      <a href="index.html" title="DoubleVectorStringStore item - a mapping of String id to a double vector." data-nsd-label-uuid="91faebe0-5ab2-4188-a3ca-2108caca65fb">
                         <img src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EClass.gif" class="nsd-app-label-icon">DoubleVectorStringItem</a>
                     </li>
-                    <li class="breadcrumb-item"><span data-nsd-label-uuid="1b58e19a-d73a-4232-977e-c0d7ea968831"><img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/16/external-diagram-seo-media-dreamstale-lineal-dreamstale.png" class="nsd-app-label-icon">Graphs</span>
+                    <li class="breadcrumb-item"><span data-nsd-label-uuid="528e194c-dba3-473d-9855-64a176276067"><img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/16/external-diagram-seo-media-dreamstale-lineal-dreamstale.png" class="nsd-app-label-icon">Graphs</span>
                     </li>
-                    <li class="breadcrumb-item active"><span data-nsd-label-uuid="28720409-50db-4f0c-b32d-e9983f94a4c2">Force Graph</span>
+                    <li class="breadcrumb-item active"><span data-nsd-label-uuid="4e7ef925-3f7c-4c31-8ab2-349b8b26441a">Force Graph</span>
                     </li>
                   </ol>
                 </nav>
@@ -345,7 +165,7 @@ Drag to rearrange, nodes will not stay in place once released.
             </div>
             <div class="row nsd-app-content-panel-title-and-items-row">
               <div class="col-auto">
-                <h1><span data-nsd-label-uuid="28720409-50db-4f0c-b32d-e9983f94a4c2" class="nsd-app-content-panel-title">Force Graph<a data-toggle="modal" data-target="#nsd_69" href="#" title="A live force-layout graph of this classifier and related classifiers showing relationships between them" style="vertical-align:super;font-size:x-small;margin-left:0.2em"><span class="far fa-question-circle nsd-app-label-icon"></span></a></span>
+                <h1><span data-nsd-label-uuid="4e7ef925-3f7c-4c31-8ab2-349b8b26441a" class="nsd-app-content-panel-title">Force Graph<a data-toggle="modal" data-target="#nsd_6n" href="#" title="A live force-layout graph of this classifier and related classifiers showing relationships between them" style="vertical-align:super;font-size:x-small;margin-left:0.2em"><span class="far fa-question-circle nsd-app-label-icon"></span></a></span>
                 </h1>
               </div>
             </div>
@@ -362,7 +182,7 @@ Drag to rearrange, nodes will not stay in place once released.
 			render: "canvas",
 			useDirtyRect: false
 		});
-		var option = {"legend":{},"series":[{"type":"graph","emphasis":{"focus":"adjacency"},"data":[{"symbol":"image://https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EClass.gif","id":"DoubleVectorStringStore@ecore://nasdanika.org/rag","name":"DoubleVectorStringStore","value":{"description":"Stores double vectors identified by strrings (URI's)","externalLink":"../DoubleVectorStringStore/index.html"},"x":674.84550811887,"y":140.30037554894952,"category":0},{"symbol":"image://https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EClass.gif","id":"StringIdentity@ecore://nasdanika.org/core/ncore","name":"StringIdentity","value":{"description":"Base for classes which are unquely identified by a string in their containment reference","externalLink":"https://ncore.models.nasdanika.org/references/eClassifiers/StringIdentity/index.html"},"x":891.1854196747231,"y":578.3998548398916,"category":1},{"symbol":"image://https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EDataType.gif","id":"EDouble@http://www.eclipse.org/emf/2002/Ecore","name":"EDouble","value":{"externalLink":"https://ecore.models.nasdanika.org/references/eClassifiers/EDouble/index.html"},"x":404.17352236021384,"y":547.0813820038411,"category":2},{"symbol":"image://https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EClass.gif","id":"DoubleVectorStringItem@ecore://nasdanika.org/rag","name":"DoubleVectorStringItem","value":{"description":"DoubleVectorStringStore item - a mapping of String id to a double vector.","externalLink":""},"x":656.8294519201625,"y":420.45559759277813,"category":0}],"symbolSize":20,"roam":true,"layout":"force","links":[{"source":0,"target":3},{"source":1,"target":3},{"source":3,"target":0},{"source":3,"target":1},{"source":3,"target":2}],"categories":[{"name":"model"},{"name":"ncore"},{"name":"ecore"}],"draggable":true,"label":{"show":true,"position":"right"},"lineStyle":{"color":"source","curveness":0},"force":{"repulsion":200,"gravity":0.1,"edgeLength":200}}]};
+		var option = {"legend":{},"series":[{"type":"graph","emphasis":{"focus":"adjacency"},"data":[{"symbol":"image://https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EClass.gif","id":"StringIdentity@ecore://nasdanika.org/core/ncore","name":"StringIdentity","value":{"description":"Base for classes which are unquely identified by a string in their containment reference","externalLink":"https://ncore.models.nasdanika.org/references/eClassifiers/StringIdentity/index.html"},"x":172.96806129640822,"y":628.0107913399991,"category":0},{"symbol":"image://https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EDataType.gif","id":"EDouble@http://www.eclipse.org/emf/2002/Ecore","name":"EDouble","value":{"externalLink":"https://ecore.models.nasdanika.org/references/eClassifiers/EDouble/index.html"},"x":629.3127441391435,"y":800.0,"category":1},{"symbol":"image://https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EClass.gif","id":"DoubleVectorStringItem@ecore://nasdanika.org/rag","name":"DoubleVectorStringItem","value":{"description":"DoubleVectorStringStore item - a mapping of String id to a double vector.","externalLink":""},"x":451.02214707276227,"y":583.060877978523,"category":2},{"symbol":"image://https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EClass.gif","id":"DoubleVectorStringStore@ecore://nasdanika.org/rag","name":"DoubleVectorStringStore","value":{"description":"Stores double vectors identified by strrings (URI's)","externalLink":"../DoubleVectorStringStore/index.html"},"x":552.2159868903782,"y":320.22447788325593,"category":2}],"symbolSize":20,"roam":true,"layout":"force","links":[{"source":0,"target":2},{"source":2,"target":0},{"source":2,"target":1},{"source":2,"target":3},{"source":3,"target":2}],"categories":[{"name":"ncore"},{"name":"ecore"},{"name":"model"}],"draggable":true,"label":{"show":true,"position":"right"},"lineStyle":{"color":"source","curveness":0},"force":{"repulsion":200,"gravity":0.1,"edgeLength":200}}]};
 		option.tooltip = {};
 		option.series[0].tooltip = {
 			formatter: function(arg) {
@@ -394,7 +214,7 @@ Drag to rearrange, nodes will not stay in place once released.
         <div class="col nsd-app-footer">
           <ul class="nav nsd-app-footer-navs">
             <li class="nav-item">
-              <a href="https://github.com/Nasdanika/retrieval-augmented-generation/model/" data-nsd-label-uuid="60c4ff60-3c8e-4438-9cc3-2e65af5db0db" class="nav-link"><span class="fab fa-github nsd-app-label-icon"></span>Sources</a>
+              <a href="https://github.com/Nasdanika/retrieval-augmented-generation/tree/main/model" data-nsd-label-uuid="237c0dde-3018-432c-897a-b720a8816868" class="nav-link"><span class="fab fa-github nsd-app-label-icon"></span>Sources</a>
             </li>
           </ul>
         </div>
