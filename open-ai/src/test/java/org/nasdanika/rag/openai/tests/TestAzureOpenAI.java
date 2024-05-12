@@ -34,8 +34,8 @@ import org.nasdanika.rag.core.ArrayListZipEntryStore;
 import org.nasdanika.rag.core.PdfTextSplitter;
 import org.nasdanika.rag.core.PdfTextSplitter.Chunk;
 import org.nasdanika.rag.core.Store;
-import org.nasdanika.rag.core.StringDoubleVectorKeyExtractor;
-import org.nasdanika.rag.core.StringMapDoubleVectorKeyExtractor;
+import org.nasdanika.rag.core.StringFloatVectorKeyExtractor;
+import org.nasdanika.rag.core.StringMapFloatVectorKeyExtractor;
 import org.nasdanika.rag.openai.OpenAIEmbeddingsKeyExtractor;
 
 import com.azure.ai.openai.OpenAIClient;
@@ -147,11 +147,11 @@ public class TestAzureOpenAI {
 		String model = "text-embedding-ada-002";
 		OpenAIEmbeddingsKeyExtractor keyExtractor = new OpenAIEmbeddingsKeyExtractor(buildEmbeddingsClient(), model, null, null);
 		
-		List<Double> embedding = keyExtractor.asStringDoubleVectorKeyExtractor().extract("Hello world!", new PrintStreamProgressMonitor());		
+		List<Float> embedding = keyExtractor.asStringFloatVectorKeyExtractor().extract("Hello world!", new PrintStreamProgressMonitor());		
 		System.out.println(embedding.size());
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		try (DataOutputStream dos = new DataOutputStream(new GZIPOutputStream(baos))) {
-			for (Double d: embedding) {
+			for (Float d: embedding) {
 				dos.writeDouble(d);
 			}
 		}
@@ -166,15 +166,15 @@ public class TestAzureOpenAI {
 		String model = "text-embedding-ada-002";
 		OpenAIEmbeddingsKeyExtractor keyExtractor = new OpenAIEmbeddingsKeyExtractor(buildEmbeddingsClient(), model, null, null);
 		
-		List<Double> embedding = keyExtractor.asStringDoubleVectorKeyExtractor().extract("Hello world!", new PrintStreamProgressMonitor());		
+		List<Float> embedding = keyExtractor.asStringFloatVectorKeyExtractor().extract("Hello world!", new PrintStreamProgressMonitor());		
 		System.out.println(embedding.size());
 		
 		ArrayListZipEntryStore store = new ArrayListZipEntryStore();
 		PrintStreamProgressMonitor progressMonitor = new PrintStreamProgressMonitor();
 		
-		Function<List<Double>, byte[]> keyEncoder = dList -> {
-			ByteBuffer buf = ByteBuffer.allocate(dList.size() * Double.BYTES);
-			dList.forEach(buf::putDouble);
+		Function<List<Float>, byte[]> keyEncoder = dList -> {
+			ByteBuffer buf = ByteBuffer.allocate(dList.size() * Float.BYTES);
+			dList.forEach(buf::putFloat);
 			return buf.array();
 		};
 		
@@ -184,7 +184,7 @@ public class TestAzureOpenAI {
 			return jsonArray.toString();
 		};
 		
-		Store<List<Double>, List<String>, Integer> adapter = store.adapt(keyEncoder, valueEncoder, null, null); // Don't need decoders - not reading this store
+		Store<List<Float>, List<String>, Integer> adapter = store.adapt(keyEncoder, valueEncoder, null, null); // Don't need decoders - not reading this store
 		
 		adapter.add(embedding, Collections.singletonList("@myVal"), progressMonitor);
 		
@@ -201,14 +201,14 @@ public class TestAzureOpenAI {
 	public void testStoringPdfTextEmbeddings() throws Exception {
 		// Key extractor
 		String model = "text-embedding-ada-002";
-		StringDoubleVectorKeyExtractor keyExtractor = new OpenAIEmbeddingsKeyExtractor(buildEmbeddingsClient(), model, null, null).asStringDoubleVectorKeyExtractor();
+		StringFloatVectorKeyExtractor keyExtractor = new OpenAIEmbeddingsKeyExtractor(buildEmbeddingsClient(), model, null, null).asStringFloatVectorKeyExtractor();
 		
 		// Store
 		ArrayListZipEntryStore store = new ArrayListZipEntryStore();
 		
-		Function<List<Double>, byte[]> keyEncoder = dList -> {
-			ByteBuffer buf = ByteBuffer.allocate(dList.size() * Double.BYTES);
-			dList.forEach(buf::putDouble);
+		Function<List<Float>, byte[]> keyEncoder = dList -> {
+			ByteBuffer buf = ByteBuffer.allocate(dList.size() * Float.BYTES);
+			dList.forEach(buf::putFloat);
 			return buf.array();
 		};
 		
@@ -218,7 +218,7 @@ public class TestAzureOpenAI {
 			return jsonArray.toString();
 		};
 		
-		Store<List<Double>, List<String>, Integer> adapter = store.adapt(keyEncoder, valueEncoder, null, null); // Don't need decoders - not reading this store
+		Store<List<Float>, List<String>, Integer> adapter = store.adapt(keyEncoder, valueEncoder, null, null); // Don't need decoders - not reading this store
 
 		// Splitter
 		EncodingRegistry registry = Encodings.newDefaultEncodingRegistry();
@@ -253,7 +253,7 @@ public class TestAzureOpenAI {
 			for (Chunk chunk: chunks) {
 				List<EObject> sources = chunk.getSources();
 				if (!sources.isEmpty()) {
-					List<Double> embedding = keyExtractor.extract(chunk.getText(), progressMonitor);
+					List<Float> embedding = keyExtractor.extract(chunk.getText(), progressMonitor);
 					List<String> range = new ArrayList<>();					
 					EObject start = sources.get(0);
 					range.add(pdfTextResource.getURIFragment(start));
@@ -280,18 +280,18 @@ public class TestAzureOpenAI {
 	public void testStoringPdfTextBatchEmbeddings() throws Exception {
 		// Key extractor
 		String model = "text-embedding-ada-002";
-		StringMapDoubleVectorKeyExtractor keyExtractor = new OpenAIEmbeddingsKeyExtractor(buildEmbeddingsClient(), model, null, null).asStringMapDoubleVectorKeyExtractor();
+		StringMapFloatVectorKeyExtractor keyExtractor = new OpenAIEmbeddingsKeyExtractor(buildEmbeddingsClient(), model, null, null).asStringMapFloatVectorKeyExtractor();
 		
 		// Store
 		ArrayListZipEntryStore store = new ArrayListZipEntryStore();
 		
-		Function<List<Double>, byte[]> keyEncoder = dList -> {
-			ByteBuffer buf = ByteBuffer.allocate(dList.size() * Double.BYTES);
-			dList.forEach(buf::putDouble);
+		Function<List<Float>, byte[]> keyEncoder = dList -> {
+			ByteBuffer buf = ByteBuffer.allocate(dList.size() * Float.BYTES);
+			dList.forEach(buf::putFloat);
 			return buf.array();
 		};
 		
-		Store<List<Double>, String, Integer> adapter = store.adapt(keyEncoder, v -> v, null, null); // Don't need decoders - not reading this store
+		Store<List<Float>, String, Integer> adapter = store.adapt(keyEncoder, v -> v, null, null); // Don't need decoders - not reading this store
 
 		// Splitter
 		EncodingRegistry registry = Encodings.newDefaultEncodingRegistry();
@@ -338,8 +338,8 @@ public class TestAzureOpenAI {
 				}
 			}
 			
-			Map<String, List<Double>> embeddings = keyExtractor.extract(chunkMap, progressMonitor);
-			for (Entry<String, List<Double>> ee: embeddings.entrySet()) {
+			Map<String, List<Float>> embeddings = keyExtractor.extract(chunkMap, progressMonitor);
+			for (Entry<String, List<Float>> ee: embeddings.entrySet()) {
 				adapter.add(ee.getValue(), ee.getKey(), progressMonitor);				
 			}
 		}
