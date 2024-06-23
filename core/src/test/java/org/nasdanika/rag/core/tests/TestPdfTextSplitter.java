@@ -25,6 +25,18 @@ public class TestPdfTextSplitter {
 	private static final File TEST = new File("C:\\Users\\Pavel\\Downloads\\togaf-standard-10th-edition-fc-evaluation-bundle-2023-04\\C220-Part1e.pdf");
 	
 	@Test
+	public void testEncodeHelloWorld() {
+		EncodingRegistry registry = Encodings.newDefaultEncodingRegistry();
+		Encoding enc = registry.getEncoding(EncodingType.CL100K_BASE);
+		IntArrayList encoded = enc.encode("Hello, World!");
+		for (Integer token: encoded.boxed()) {
+			IntArrayList tokens = new IntArrayList();
+			tokens.add(token);
+			System.out.println(token + " '" + enc.decode(tokens) + "'");			
+		}
+	}
+	
+	@Test
 	public void testPdfTextSplitter() throws Exception {
 		EncodingRegistry registry = Encodings.newDefaultEncodingRegistry();
 		Encoding enc = registry.getEncoding(EncodingType.CL100K_BASE);
