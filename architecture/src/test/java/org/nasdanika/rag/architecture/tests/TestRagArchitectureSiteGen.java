@@ -55,9 +55,9 @@ public class TestRagArchitectureSiteGen {
 				return new EObjectReflectiveProcessorFactoryProvider(reflectiveFactory) {
 					
 					@Override
-					protected boolean isCompactPath() {
+					protected boolean isCompactPath(org.nasdanika.graph.processor.ProcessorConfig config) {
 						return true;
-						
+					
 					}					
 					
 				};				
