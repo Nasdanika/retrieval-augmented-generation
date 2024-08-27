@@ -20,7 +20,7 @@ import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.html.bootstrap.Theme;
 import org.nasdanika.html.model.app.gen.AppSiteGenerator;
 import org.nasdanika.html.model.app.graph.emf.EObjectReflectiveProcessorFactoryProvider;
-import org.nasdanika.models.architecture.processors.doc.ArchitectureActionGenerator;
+import org.nasdanika.models.architecture.processors.doc.ArchitectureHtmlAppGenerator;
 import org.nasdanika.models.architecture.processors.doc.ArchitectureNodeProcessorFactory;
 import org.nasdanika.models.architecture.util.ArchitectureDrawioResourceFactory;
 
@@ -45,7 +45,7 @@ public class TestRagArchitectureSiteGen {
 								
 		File output = new File(actionModelsDir, "architecture.xmi");
 				
-		ArchitectureActionGenerator actionGenerator = new ArchitectureActionGenerator(
+		ArchitectureHtmlAppGenerator htmlAppGenerator = new ArchitectureHtmlAppGenerator(
 				ragArchitectureResource.getContents().get(0),
 				new ArchitectureNodeProcessorFactory(context, null)) {
 			
@@ -65,7 +65,7 @@ public class TestRagArchitectureSiteGen {
 			
 		};
 		
-		actionGenerator.generateActionModel(
+		htmlAppGenerator.generateHtmlAppModel(
 				diagnosticConsumer, 
 				output,
 				progressMonitor);
