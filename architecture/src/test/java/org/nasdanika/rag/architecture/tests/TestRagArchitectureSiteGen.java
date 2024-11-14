@@ -18,8 +18,8 @@ import org.nasdanika.common.MutableContext;
 import org.nasdanika.common.PrintStreamProgressMonitor;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.html.bootstrap.Theme;
-import org.nasdanika.html.model.app.gen.AppSiteGenerator;
-import org.nasdanika.html.model.app.graph.emf.EObjectReflectiveProcessorFactoryProvider;
+import org.nasdanika.models.app.gen.AppSiteGenerator;
+import org.nasdanika.models.app.graph.emf.EObjectReflectiveProcessorFactoryProvider;
 import org.nasdanika.models.architecture.processors.doc.ArchitectureHtmlAppGenerator;
 import org.nasdanika.models.architecture.processors.doc.ArchitectureNodeProcessorFactory;
 import org.nasdanika.models.architecture.util.ArchitectureDrawioResourceFactory;
@@ -51,7 +51,7 @@ public class TestRagArchitectureSiteGen {
 			
 
 			@Override
-			protected org.nasdanika.html.model.app.graph.emf.EObjectReflectiveProcessorFactoryProvider createReflectiveFactoryProvider(Object reflectiveFactory) {
+			protected org.nasdanika.models.app.graph.emf.EObjectReflectiveProcessorFactoryProvider createReflectiveFactoryProvider(Object reflectiveFactory) {
 				return new EObjectReflectiveProcessorFactoryProvider(reflectiveFactory) {
 					
 					@Override
