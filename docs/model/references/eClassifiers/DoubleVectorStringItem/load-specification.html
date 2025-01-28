@@ -1,21 +1,21 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="EN">
   <head>
     <title>Load specification</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cerulean/bootstrap.min.css" id="nsd-bootstrap-theme-stylesheet">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cerulean/bootstrap.min.css" id="nsd-bootstrap-theme-stylesheet"/>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Nasdanika-Models/html-app@master/gen/web-resources/css/app.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jstree@3.3.16/dist/themes/default/style.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.0/github-markdown.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/default.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-vue@2.23.0/dist/bootstrap-vue.css">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Nasdanika-Models/html-app@master/gen/web-resources/css/app.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jstree@3.3.16/dist/themes/default/style.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.0/github-markdown.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/default.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-vue@2.23.0/dist/bootstrap-vue.css"/>
     <script src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/html-app@master/gen/web-resources/js/common.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/html-app@master/gen/web-resources/js/dark-head.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jstree@3.3.16/dist/jstree.min.js"></script>
@@ -34,55 +34,19 @@
 
   gtag('config', 'G-9BRJVLK8CC');
 </script>    
-
-<script src="../../../search-documents.js"></script>
-
-<script src="https://cdn.jsdelivr.net/gh/olivernn/lunr.js@v2.3.9/lunr.js"></script>
-
-<script>
-// Script for full-text search of JsTree
-
-window.nsdJsTreeSearchCallback = function(str, node) { 
-    var sf = new $.vakata.search(str, true, { caseSensitive : false, fuzzy : false }); 
-    if (sf.search(node.text).isMatch) {
-		return true;
-	} 
-    let searchResult = this.search(str); 
-    for (const sr in searchResult) {
-        if (searchResult[sr].ref === node.original['data-nsd-label-uuid']) {
-            return true;
-        } 
-    } 
-    return false; 
-}.bind(lunr(function () {
-			  this.ref('id');
-			  this.field('title');
-			  this.field('content');
-
-			  for (const key in searchDocuments) {
-				  let doc = searchDocuments[key];
-				this.add({
-					id: doc['link-uuid'],
-					title: doc.title,
-					path: doc.path,
-					content: doc.content
-				});  
-			  }
-			}));
-</script>
 </head>
   <body>
     <div class="container-fluid nsd-app-container">
       <div class="row">
         <div class="col nsd-app-header">
-          <a href="https://rag.nasdanika.org/" data-nsd-label-uuid="a8116d35-a510-4698-8744-e0df6a31bdd1" class="nsd-app-header-title">
-            <img src="https://docs.nasdanika.org/images/nasdanika-logo.png" class="nsd-app-label-icon">Nasdanika RAG</a>
+          <a href="https://rag.nasdanika.org/" data-nsd-label-uuid="ee9f560d-1b07-426a-a373-c8fddef3fe0d" class="nsd-app-header-title">
+            <img src="https://docs.nasdanika.org/images/nasdanika-logo.png" class="nsd-app-label-icon"/>Nasdanika RAG</a>
           <ul class="nav nsd-app-header-navs">
             <li class="nav-item">
-              <a href="../../../search.html" data-nsd-label-uuid="5aca182c-5969-4099-b6cf-86d827f3b80e" class="nav-link"><span class="fas fa-search nsd-app-label-icon"></span>Search</a>
+              <a href="../../../search.html" data-nsd-label-uuid="c1ff425d-a7d3-4b2d-9e37-110093d3f787" class="nav-link"><span class="fas fa-search nsd-app-label-icon"></span>Search</a>
             </li>
             <li class="nav-item">
-              <a href="../../../glossary.html" data-nsd-label-uuid="2b1a78c5-78a3-4ca2-8a5b-7077c94240d9" class="nav-link"><span class="fas fa-book nsd-app-label-icon"></span>Glossary</a>
+              <a href="../../../glossary.html" data-nsd-label-uuid="ef92489c-96d9-4c14-a3f1-f6da19e41563" class="nav-link"><span class="fas fa-book nsd-app-label-icon"></span>Glossary</a>
             </li>
           </ul>
         </div>
@@ -90,33 +54,33 @@ window.nsdJsTreeSearchCallback = function(str, node) {
       <div class="row">
         <div class="col nsd-app-navbar">
           <ul class="navbar navbar-light navbar-expand-lg">
-            <a href="../../../index.html" data-nsd-label-uuid="bb179569-3434-4c71-8f3f-50b0717b86a2" class="navbar-brand">
-              <img src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EPackage.gif" class="nsd-app-label-icon">model</a>
-            <button type="button" data-toggle="collapse" data-target="#nsd_4r" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span>
+            <a href="../../../index.html" data-nsd-label-uuid="32b2865c-5995-4501-bd57-6ccb0e9fa188" class="navbar-brand">
+              <img src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EPackage.gif" class="nsd-app-label-icon"/>model</a>
+            <button type="button" data-toggle="collapse" data-target="#nsd_7r" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span>
             </button>
-            <div id="nsd_4r" class="collapse navbar-collapse">
+            <div id="nsd_7r" class="collapse navbar-collapse">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                  <a href="../../../classifiers.html" data-nsd-label-uuid="85b06b36-3483-4e7b-95c5-963f2aa75ba7" class="nav-link">Classifiers</a>
+                  <a href="../../../classifiers.html" data-nsd-label-uuid="f811b27f-60cc-415f-a333-5c9742dbde0e" class="nav-link">Classifiers</a>
                 </li>
                 <li class="nav-item">
-                  <a href="../../../diagram.html" data-nsd-label-uuid="b66e618b-85dc-46d5-8daf-5972b5375fd6" class="nav-link"><span class="fas fa-project-diagram nsd-app-label-icon"></span>Diagram</a>
+                  <a href="../../../diagram.html" data-nsd-label-uuid="4dbe6f1d-2265-4f29-afcc-513bf99e682c" class="nav-link"><span class="fas fa-project-diagram nsd-app-label-icon"></span>Diagram</a>
                 </li>
                 <li class="nav-item">
-                  </li><li data-nsd-label-uuid="e7fd982b-383a-44f5-ad8a-8c840c312e81" class="dropdown">
+                  <li data-nsd-label-uuid="503a2afa-d6f0-4801-a83c-d4927789386f" class="dropdown">
                     <a role="button" data-toggle="dropdown" class="nav-link dropdown-toggle">
-                      <img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/16/external-diagram-seo-media-dreamstale-lineal-dreamstale.png" class="nsd-app-label-icon">Graphs</a>
+                      <img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/16/external-diagram-seo-media-dreamstale-lineal-dreamstale.png" class="nsd-app-label-icon"/>Graphs</a>
                     <div class="dropdown-menu">
-                      <a href="../../../default-graph.html" data-nsd-label-uuid="025350a1-7772-4b8d-b6ba-311fac4e9994" class="dropdown-item">Default Graph</a>
-                      <a href="../../../circular-layout-graph.html" data-nsd-label-uuid="598c2834-7e05-4889-9411-45c6cc39a8da" class="dropdown-item">Circular Graph</a>
-                      <a href="../../../force-layout-graph.html" data-nsd-label-uuid="2bcd62a9-6bdd-4948-bb34-e9838322e09c" class="dropdown-item">Force Graph</a>
+                      <a href="../../../default-graph.html" data-nsd-label-uuid="7d1f976d-bdc8-4267-a226-97b1101ec3fd" class="dropdown-item">Default Graph</a>
+                      <a href="../../../circular-layout-graph.html" data-nsd-label-uuid="bcff121d-6449-4555-9c60-e492283219ec" class="dropdown-item">Circular Graph</a>
+                      <a href="../../../force-layout-graph.html" data-nsd-label-uuid="33504f1c-ef81-41b3-999b-4e2eccd1d440" class="dropdown-item">Force Graph</a>
                       <div title="With dependencies and sub-packages" class="dropdown-divider"></div>
-                      <a href="../../../default-graph-with-dependencies-and-subpackages.html" data-nsd-label-uuid="bf26c3cc-bf85-4048-82a0-694910e780b8" class="dropdown-item">Default Graph</a>
-                      <a href="../../../circular-layout-graph-with-dependencies-and-subpackages.html" data-nsd-label-uuid="9e425bcd-2ec8-4e5b-838f-d90bbc9f0373" class="dropdown-item">Circular Graph</a>
-                      <a href="../../../force-layout-graph-with-dependencies-and-subpackages.html" data-nsd-label-uuid="34064ed1-e952-4b13-8668-b8c422e473f4" class="dropdown-item">Force Graph</a>
+                      <a href="../../../default-graph-with-dependencies-and-subpackages.html" data-nsd-label-uuid="684e0c44-a7a4-4cbc-bab9-d380bb0de75a" class="dropdown-item">Default Graph</a>
+                      <a href="../../../circular-layout-graph-with-dependencies-and-subpackages.html" data-nsd-label-uuid="a32c1137-d241-4068-9fbb-5a3ac060c4d0" class="dropdown-item">Circular Graph</a>
+                      <a href="../../../force-layout-graph-with-dependencies-and-subpackages.html" data-nsd-label-uuid="580ebac5-09d0-4af2-817d-5514b4e1f2d6" class="dropdown-item">Force Graph</a>
                     </div>
                   </li>
-                
+                </li>
               </ul>
             </div>
           </ul>
@@ -125,27 +89,27 @@ window.nsdJsTreeSearchCallback = function(str, node) {
       <div class="row nsd-app-content-row">
         <div class="col nsd-app-navigation-panel">
           <div class="list-group list-group-flush">
-            <a href="index.html" title="DoubleVectorStringStore item - a mapping of String id to a double vector." data-nsd-label-uuid="74624a53-756b-4ef2-a49e-f7adf2fcf926" class="list-group-item list-group-action active">
-              <img src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EClass.gif" class="nsd-app-label-icon">DoubleVectorStringItem</a>
-            <a href="../DoubleVectorStringStore/index.html" title="Stores double vectors identified by strrings (URI's)" data-nsd-label-uuid="2cce47d4-1fc1-4581-98a0-85c5e3affab4" class="list-group-item list-group-action">
-              <img src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EClass.gif" class="nsd-app-label-icon">DoubleVectorStringStore</a>
-            <a href="../FloatVectorStringItem/index.html" title="FloatVectorStringStore item - a mapping of String id to a float vector." data-nsd-label-uuid="17903bce-0064-442e-95f4-226daf93e648" class="list-group-item list-group-action">
-              <img src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EClass.gif" class="nsd-app-label-icon">FloatVectorStringItem</a>
-            <a href="../FloatVectorStringStore/index.html" title="Stores float vectors identified by strrings (URI's)" data-nsd-label-uuid="277ce8c6-fc31-4845-bdff-6b71e35aab70" class="list-group-item list-group-action">
-              <img src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EClass.gif" class="nsd-app-label-icon">FloatVectorStringStore</a>
+            <a href="index.html" title="DoubleVectorStringStore item - a mapping of String id to a double vector." data-nsd-label-uuid="ed62a66a-eb7f-47d4-b05b-2720a2ef6417" class="list-group-item list-group-action active">
+              <img src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EClass.gif" class="nsd-app-label-icon"/>DoubleVectorStringItem</a>
+            <a href="../DoubleVectorStringStore/index.html" title="Stores double vectors identified by strrings (URI's)" data-nsd-label-uuid="390d9210-0587-4f29-a619-591cc14d5ba3" class="list-group-item list-group-action">
+              <img src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EClass.gif" class="nsd-app-label-icon"/>DoubleVectorStringStore</a>
+            <a href="../FloatVectorStringItem/index.html" title="FloatVectorStringStore item - a mapping of String id to a float vector." data-nsd-label-uuid="cd5ad321-f839-45db-aa97-4ab3a8542931" class="list-group-item list-group-action">
+              <img src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EClass.gif" class="nsd-app-label-icon"/>FloatVectorStringItem</a>
+            <a href="../FloatVectorStringStore/index.html" title="Stores float vectors identified by strrings (URI's)" data-nsd-label-uuid="d1953da5-59e1-4b16-8093-6ff280baaaf0" class="list-group-item list-group-action">
+              <img src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EClass.gif" class="nsd-app-label-icon"/>FloatVectorStringStore</a>
           </div>
         </div>
-        <div data-nsd-label-uuid="5dec0bb8-977c-4e0a-8e83-04074a066aaf" data-nsd-action-uris="uuid:5dec0bb8-977c-4e0a-8e83-04074a066aaf" class="col nsd-app-content-panel">
+        <div data-nsd-label-uuid="55999788-c4df-4936-9e9f-bc092b81766e" data-nsd-action-uris="uuid:55999788-c4df-4936-9e9f-bc092b81766e" class="col nsd-app-content-panel">
           <div class="container-fluid">
             <div class="row nsd-app-content-panel-breadcrumb-row">
               <div class="col">
                 <nav aria-label="breadcrumb" class="nsd-app-content-panel-breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                      <a href="index.html" title="DoubleVectorStringStore item - a mapping of String id to a double vector." data-nsd-label-uuid="74624a53-756b-4ef2-a49e-f7adf2fcf926">
-                        <img src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EClass.gif" class="nsd-app-label-icon">DoubleVectorStringItem</a>
+                      <a href="index.html" title="DoubleVectorStringStore item - a mapping of String id to a double vector." data-nsd-label-uuid="ed62a66a-eb7f-47d4-b05b-2720a2ef6417">
+                        <img src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EClass.gif" class="nsd-app-label-icon"/>DoubleVectorStringItem</a>
                     </li>
-                    <li class="breadcrumb-item active"><span data-nsd-label-uuid="5dec0bb8-977c-4e0a-8e83-04074a066aaf">Load specification</span>
+                    <li class="breadcrumb-item active"><span data-nsd-label-uuid="55999788-c4df-4936-9e9f-bc092b81766e">Load specification</span>
                     </li>
                   </ol>
                 </nav>
@@ -153,8 +117,8 @@ window.nsdJsTreeSearchCallback = function(str, node) {
             </div>
             <div class="row nsd-app-content-panel-title-and-items-row">
               <div class="col-auto">
-                <h1><span data-nsd-label-uuid="5dec0bb8-977c-4e0a-8e83-04074a066aaf" class="nsd-app-content-panel-title">Load specification</span>
-                </h1>
+                <H1><span data-nsd-label-uuid="55999788-c4df-4936-9e9f-bc092b81766e" class="nsd-app-content-panel-title">Load specification</span>
+                </H1>
               </div>
             </div>
             <div class="row nsd-app-content-panel-content-row">
@@ -164,7 +128,7 @@ window.nsdJsTreeSearchCallback = function(str, node) {
                     <div class="col">
 <div>
   <div id="load-specification-table">
-    <nsd-table :columns="[{&quot;visible&quot;:true,&quot;sortable&quot;:true,&quot;label&quot;:&quot;Key&quot;,&quot;key&quot;:&quot;key&quot;},{&quot;visible&quot;:true,&quot;sortable&quot;:true,&quot;label&quot;:&quot;Type&quot;,&quot;key&quot;:&quot;type&quot;},{&quot;key&quot;:&quot;multiplicity&quot;,&quot;visible&quot;:true,&quot;label&quot;:&quot;Multiplicity&quot;},{&quot;key&quot;:&quot;homogeneous&quot;,&quot;visible&quot;:true,&quot;label&quot;:&quot;Homogeneous&quot;},{&quot;key&quot;:&quot;strict-containment&quot;,&quot;visible&quot;:true,&quot;label&quot;:&quot;Strict Containment&quot;},{&quot;visible&quot;:true,&quot;sortable&quot;:true,&quot;label&quot;:&quot;Exclusive With&quot;,&quot;key&quot;:&quot;exclusive&quot;},{&quot;key&quot;:&quot;description&quot;,&quot;visible&quot;:true,&quot;label&quot;:&quot;Description&quot;}]" :items="[{&quot;type&quot;:&quot;<!-- EString--> \r\n<a href=\&quot;//ecore.models.nasdanika.org/references/eClassifiers/EString/index.html\&quot;>\r\n  <img src=\&quot;https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EDataType.gif\&quot; class=\&quot;nsd-app-label-icon\&quot;/>EString<\/a>&quot;,&quot;multiplicity&quot;:&quot;1&quot;,&quot;key&quot;:&quot;id&quot;},{&quot;type&quot;:&quot;<!-- EDouble--> \r\n<a href=\&quot;https://ecore.models.nasdanika.org/references/eClassifiers/EDouble/index.html\&quot;>\r\n  <img src=\&quot;https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EDataType.gif\&quot; class=\&quot;nsd-app-label-icon\&quot;/>EDouble<\/a>&quot;,&quot;multiplicity&quot;:&quot;0..1&quot;,&quot;key&quot;:&quot;vector&quot;}]" config-key="524154647-DoubleVectorStringItem-load-specification" />
+    <nsd-table :columns="[{&quot;visible&quot;:true,&quot;sortable&quot;:true,&quot;label&quot;:&quot;Key&quot;,&quot;key&quot;:&quot;key&quot;},{&quot;visible&quot;:true,&quot;sortable&quot;:true,&quot;label&quot;:&quot;Type&quot;,&quot;key&quot;:&quot;type&quot;},{&quot;key&quot;:&quot;multiplicity&quot;,&quot;visible&quot;:true,&quot;label&quot;:&quot;Multiplicity&quot;},{&quot;key&quot;:&quot;homogeneous&quot;,&quot;visible&quot;:true,&quot;label&quot;:&quot;Homogeneous&quot;},{&quot;key&quot;:&quot;strict-containment&quot;,&quot;visible&quot;:true,&quot;label&quot;:&quot;Strict Containment&quot;},{&quot;visible&quot;:true,&quot;sortable&quot;:true,&quot;label&quot;:&quot;Exclusive With&quot;,&quot;key&quot;:&quot;exclusive&quot;},{&quot;key&quot;:&quot;description&quot;,&quot;visible&quot;:true,&quot;label&quot;:&quot;Description&quot;}]" :items="[{&quot;type&quot;:&quot;&lt;!-- EString--&gt; \r\n&lt;a href=\&quot;//ecore.models.nasdanika.org/references/eClassifiers/EString/index.html\&quot;&gt;\r\n  &lt;img src=\&quot;https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EDataType.gif\&quot; class=\&quot;nsd-app-label-icon\&quot;/&gt;EString&lt;\/a&gt;&quot;,&quot;multiplicity&quot;:&quot;1&quot;,&quot;key&quot;:&quot;id&quot;},{&quot;type&quot;:&quot;&lt;!-- EDouble--&gt; \r\n&lt;a href=\&quot;https://ecore.models.nasdanika.org/references/eClassifiers/EDouble/index.html\&quot;&gt;\r\n  &lt;img src=\&quot;https://cdn.jsdelivr.net/gh/Nasdanika-Models/ecore@master/graph/web-resources/icons/EDataType.gif\&quot; class=\&quot;nsd-app-label-icon\&quot;/&gt;EDouble&lt;\/a&gt;&quot;,&quot;multiplicity&quot;:&quot;0..1&quot;,&quot;key&quot;:&quot;vector&quot;}]" config-key="524154647-DoubleVectorStringItem-load-specification"/>
   </div>
   <script>new Vue({ el: '#load-specification-table' });</script>
 </div></div>
@@ -179,7 +143,7 @@ window.nsdJsTreeSearchCallback = function(str, node) {
         <div class="col nsd-app-footer">
           <ul class="nav nsd-app-footer-navs">
             <li class="nav-item">
-              <a href="https://github.com/Nasdanika/retrieval-augmented-generation/tree/main/model" data-nsd-label-uuid="0d221076-264b-48ca-b921-7fa2158200ef" class="nav-link"><span class="fab fa-github nsd-app-label-icon"></span>Sources</a>
+              <a href="https://github.com/Nasdanika/retrieval-augmented-generation/tree/main/model" data-nsd-label-uuid="afe2b8e2-1bcb-4f7c-8632-2e3c73adbc97" class="nav-link"><span class="fab fa-github nsd-app-label-icon"></span>Sources</a>
             </li>
           </ul>
         </div>
