@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.json.JSONArray;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Disabled;
 import org.nasdanika.common.PrintStreamProgressMonitor;
 import org.nasdanika.models.pdf.Document;
 import org.nasdanika.models.pdf.util.PdfTextResourceFactory;
@@ -69,6 +70,7 @@ public class TestAzureOpenAI {
 	}
 			
 	@Test
+	@Disabled // Quota exceeded
 	public void testOpenAIChatCompletions() throws Exception {
         String deploymentOrModelId = "gpt-3.5-turbo";
 
@@ -105,6 +107,7 @@ public class TestAzureOpenAI {
 			""";
 	
 	@Test
+	@Disabled // Quota exceeded
 	public void testOpenAIPromptWithChatCompletions() throws Exception {
         String deploymentOrModelId = "gpt-3.5-turbo";
 
@@ -143,6 +146,7 @@ public class TestAzureOpenAI {
 	}
 	
 	@Test
+	@Disabled // Quota exceeded
 	public void testOpenAIEmbeddings() throws Exception {
 		String model = "text-embedding-ada-002";
 		OpenAIEmbeddingsKeyExtractor keyExtractor = new OpenAIEmbeddingsKeyExtractor(buildEmbeddingsClient(), model, null, null);
@@ -162,6 +166,7 @@ public class TestAzureOpenAI {
 	}	
 	
 	@Test
+	@Disabled // Quota exceeded
 	public void testStoringOpenAIEmbeddings() throws Exception {
 		String model = "text-embedding-ada-002";
 		OpenAIEmbeddingsKeyExtractor keyExtractor = new OpenAIEmbeddingsKeyExtractor(buildEmbeddingsClient(), model, null, null);
@@ -198,6 +203,7 @@ public class TestAzureOpenAI {
 	}	
 	
 	@Test
+	@Disabled // Quota exceeded
 	public void testStoringPdfTextEmbeddings() throws Exception {
 		// Key extractor
 		String model = "text-embedding-ada-002";
@@ -277,6 +283,7 @@ public class TestAzureOpenAI {
 	 * @throws Exception
 	 */
 	@Test
+	@Disabled // Quota exceeded
 	public void testStoringPdfTextBatchEmbeddings() throws Exception {
 		// Key extractor
 		String model = "text-embedding-ada-002";
@@ -356,6 +363,7 @@ public class TestAzureOpenAI {
 	 * @throws Exception
 	 */
 	@Test
+	@Disabled // Quota exceeded
 	public void testLoadPdfEmbeddingsStore() throws Exception {
 		String fileName = "target/test-pdf-embeddings.zip";
 		ArrayListZipEntryStore store = new ArrayListZipEntryStore(new ZipInputStream(new FileInputStream(fileName)));
