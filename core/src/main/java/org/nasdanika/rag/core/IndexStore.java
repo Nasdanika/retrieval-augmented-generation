@@ -7,9 +7,9 @@ import java.util.Map;
 
 import org.nasdanika.common.ProgressMonitor;
 
-import com.github.jelmerk.knn.Index;
-import com.github.jelmerk.knn.Item;
-import com.github.jelmerk.knn.hnsw.HnswIndex;
+import com.github.jelmerk.hnswlib.core.Index;
+import com.github.jelmerk.hnswlib.core.Item;
+import com.github.jelmerk.hnswlib.core.hnsw.HnswIndex;
 
 public class IndexStore<K, V, D> implements Store<K, V, D> {
 	
@@ -79,9 +79,9 @@ public class IndexStore<K, V, D> implements Store<K, V, D> {
 		
 		class SearchResultImpl implements SearchResult<V,D> {
 			
-			com.github.jelmerk.knn.SearchResult<IndexItem<V,K>,D> target;
+			com.github.jelmerk.hnswlib.core.SearchResult<IndexItem<V,K>,D> target;
 			
-			public SearchResultImpl(com.github.jelmerk.knn.SearchResult<IndexItem<V,K>,D> sr) {
+			public SearchResultImpl(com.github.jelmerk.hnswlib.core.SearchResult<IndexItem<V,K>,D> sr) {
 				target = sr;
 			}
 			

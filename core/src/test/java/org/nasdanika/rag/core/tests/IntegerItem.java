@@ -1,6 +1,6 @@
 package org.nasdanika.rag.core.tests;
 
-import com.github.jelmerk.knn.Item;
+import com.github.jelmerk.hnswlib.core.Item;
 
 @SuppressWarnings("serial")
 public class IntegerItem implements Item<Integer, Integer> {

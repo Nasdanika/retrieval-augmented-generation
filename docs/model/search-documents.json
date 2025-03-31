@@ -1,0 +1,58 @@
+{
+  "references/eClassifiers/DoubleVectorStringItem/inheritance.html": {
+    "path": "DoubleVectorStringItem/Inheritance",
+    "link-uuid": "dc4a3754-c97f-4327-9730-3d9f3ebf8f06",
+    "title": "Inheritance",
+    "content": "Supertypes "
+  },
+  "references/eClassifiers/DoubleVectorStringItem/index.html": {
+    "link-uuid": "9bdab462-25eb-4e8e-9acb-14cf10327258",
+    "title": "DoubleVectorStringItem",
+    "content": "DoubleVectorStringStore item - a mapping of String id to a double vector."
+  },
+  "references/eClassifiers/FloatVectorStringItem/index.html": {
+    "link-uuid": "82d2ead3-58af-48d2-985e-3d33461f9ae5",
+    "title": "FloatVectorStringItem",
+    "content": "FloatVectorStringStore item - a mapping of String id to a float vector."
+  },
+  "references/eClassifiers/FloatVectorStringItem/references/eStructuralFeatures/vector/index.html": {
+    "path": "FloatVectorStringItem/Attributes/vector",
+    "link-uuid": "e197dcea-cea7-4d2c-95c8-9015b9138481",
+    "title": "vector",
+    "content": "Type EFloat Multiplicity 0..1 Vector elements"
+  },
+  "references/eClassifiers/DoubleVectorStringItem/references/eStructuralFeatures/vector/index.html": {
+    "path": "DoubleVectorStringItem/Attributes/vector",
+    "link-uuid": "afb536ac-4f40-4ad2-aae9-adf3b467e91b",
+    "title": "vector",
+    "content": "Type EDouble Multiplicity 0..1 Vector elements"
+  },
+  "references/eClassifiers/DoubleVectorStringStore/index.html": {
+    "link-uuid": "8d8a8542-34c9-4f0d-bb64-1c0602997eb9",
+    "title": "DoubleVectorStringStore",
+    "content": "Stores double vectors identified by strrings (URI&rsquo;s)"
+  },
+  "references/eClassifiers/FloatVectorStringStore/index.html": {
+    "link-uuid": "fddf5d63-4e6c-4d56-bdd7-81da614eb039",
+    "title": "FloatVectorStringStore",
+    "content": "Stores float vectors identified by strrings (URI&rsquo;s)"
+  },
+  "references/eClassifiers/FloatVectorStringStore/references/eStructuralFeatures/items/index.html": {
+    "path": "FloatVectorStringStore/References/items",
+    "link-uuid": "d52d075f-6911-4add-a01a-e3308b468e8d",
+    "title": "items",
+    "content": "Type FloatVectorStringItem Multiplicity 0..* Store items"
+  },
+  "references/eClassifiers/FloatVectorStringItem/inheritance.html": {
+    "path": "FloatVectorStringItem/Inheritance",
+    "link-uuid": "a16c5fdd-bace-4231-bfcd-d35707d18e31",
+    "title": "Inheritance",
+    "content": "Supertypes "
+  },
+  "references/eClassifiers/DoubleVectorStringStore/references/eStructuralFeatures/items/index.html": {
+    "path": "DoubleVectorStringStore/References/items",
+    "link-uuid": "37d5a814-3114-4ce9-81fb-31b723a75f1d",
+    "title": "items",
+    "content": "Type DoubleVectorStringItem Multiplicity 0..* Store items"
+  }
+}

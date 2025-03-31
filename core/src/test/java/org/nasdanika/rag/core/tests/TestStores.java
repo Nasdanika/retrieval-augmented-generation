@@ -15,9 +15,9 @@ import org.nasdanika.rag.core.ArrayListZipEntryStore;
 import org.nasdanika.rag.core.IndexStore;
 import org.nasdanika.rag.core.Store.SearchResult;
 
-import com.github.jelmerk.knn.DistanceFunction;
-import com.github.jelmerk.knn.bruteforce.BruteForceIndex;
-import com.github.jelmerk.knn.hnsw.HnswIndex;
+import com.github.jelmerk.hnswlib.core.DistanceFunction;
+import com.github.jelmerk.hnswlib.core.bruteforce.BruteForceIndex;
+import com.github.jelmerk.hnswlib.core.hnsw.HnswIndex;
 
 public class TestStores {
 	

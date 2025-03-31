@@ -6,10 +6,10 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import com.github.jelmerk.knn.DistanceFunction;
-import com.github.jelmerk.knn.Index;
-import com.github.jelmerk.knn.SearchResult;
-import com.github.jelmerk.knn.hnsw.HnswIndex;
+import com.github.jelmerk.hnswlib.core.DistanceFunction;
+import com.github.jelmerk.hnswlib.core.Index;
+import com.github.jelmerk.hnswlib.core.SearchResult;
+import com.github.jelmerk.hnswlib.core.hnsw.HnswIndex;
 
 public class TestHnswIndex {
 	
