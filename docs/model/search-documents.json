@@ -1,58 +1,68 @@
 {
   "references/eClassifiers/DoubleVectorStringItem/inheritance.html": {
     "path": "DoubleVectorStringItem/Inheritance",
-    "link-uuid": "d233723b-52c2-4b1c-8e96-ad3928a0019a",
+    "link-uuid": "841e29ff-169e-49a4-a2df-ec9f46fff9ca",
     "title": "Inheritance",
-    "content": "Supertypes "
+    "content": "Supertypes ",
+    "timestamp": 1747881432833
   },
   "references/eClassifiers/DoubleVectorStringItem/index.html": {
-    "link-uuid": "d2c1cbca-90b4-409d-a7ef-648d7dc46929",
+    "link-uuid": "e9d587c8-c5c9-4ac7-ba84-4c2c94092e44",
     "title": "DoubleVectorStringItem",
-    "content": "DoubleVectorStringStore item - a mapping of String id to a double vector."
+    "content": "DoubleVectorStringStore item - a mapping of String id to a double vector.",
+    "timestamp": 1747881432832
   },
   "references/eClassifiers/FloatVectorStringItem/index.html": {
-    "link-uuid": "aeb7d3da-053e-4d0a-8ad0-19b7ac8c5fa5",
+    "link-uuid": "4c17ef59-3dd5-46e3-927f-277de554cfd5",
     "title": "FloatVectorStringItem",
-    "content": "FloatVectorStringStore item - a mapping of String id to a float vector."
+    "content": "FloatVectorStringStore item - a mapping of String id to a float vector.",
+    "timestamp": 1747881432854
   },
   "references/eClassifiers/FloatVectorStringItem/references/eStructuralFeatures/vector/index.html": {
     "path": "FloatVectorStringItem/Attributes/vector",
-    "link-uuid": "b9d758fd-ce73-43bc-b416-c133b9488e5b",
+    "link-uuid": "58e75f83-34b7-4215-b53a-b7d905bd8b6f",
     "title": "vector",
-    "content": "Type EFloat Multiplicity 0..1 Vector elements"
+    "content": "Type EFloat Multiplicity 0..1 Vector elements",
+    "timestamp": 1747881432858
   },
   "references/eClassifiers/DoubleVectorStringItem/references/eStructuralFeatures/vector/index.html": {
     "path": "DoubleVectorStringItem/Attributes/vector",
-    "link-uuid": "84a654b5-d5b9-4ee7-a788-5c52e80bc0fe",
+    "link-uuid": "a7fa5cff-af3f-40e4-9d5a-c46752cdca0a",
     "title": "vector",
-    "content": "Type EDouble Multiplicity 0..1 Vector elements"
+    "content": "Type EDouble Multiplicity 0..1 Vector elements",
+    "timestamp": 1747881432836
   },
   "references/eClassifiers/DoubleVectorStringStore/index.html": {
-    "link-uuid": "c984c762-ef31-4b77-ae72-9dc0046992f5",
+    "link-uuid": "1b8ca43d-526e-4f12-9ff3-3595ad56d752",
     "title": "DoubleVectorStringStore",
-    "content": "Stores double vectors identified by strrings (URI&rsquo;s)"
+    "content": "Stores double vectors identified by strrings (URI&rsquo;s)",
+    "timestamp": 1747881432843
   },
   "references/eClassifiers/FloatVectorStringStore/index.html": {
-    "link-uuid": "42853427-b9a6-41e6-bdea-55feaa8182c7",
+    "link-uuid": "9f763f95-ddfc-41be-a890-0ed62482987a",
     "title": "FloatVectorStringStore",
-    "content": "Stores float vectors identified by strrings (URI&rsquo;s)"
+    "content": "Stores float vectors identified by strrings (URI&rsquo;s)",
+    "timestamp": 1747881432863
   },
   "references/eClassifiers/FloatVectorStringStore/references/eStructuralFeatures/items/index.html": {
     "path": "FloatVectorStringStore/References/items",
-    "link-uuid": "a1a03046-3925-45ab-9526-a5e75051cd4e",
+    "link-uuid": "dd0eceea-cb18-4232-a795-ee630e4a0040",
     "title": "items",
-    "content": "Type FloatVectorStringItem Multiplicity 0..* Store items"
+    "content": "Type FloatVectorStringItem Multiplicity 0..* Store items",
+    "timestamp": 1747881432866
   },
   "references/eClassifiers/FloatVectorStringItem/inheritance.html": {
     "path": "FloatVectorStringItem/Inheritance",
-    "link-uuid": "7a40ac9f-6c4b-4415-8f31-5e93a3cda398",
+    "link-uuid": "ecaa13de-8124-40db-9ae5-4d809ca400d1",
     "title": "Inheritance",
-    "content": "Supertypes "
+    "content": "Supertypes ",
+    "timestamp": 1747881432856
   },
   "references/eClassifiers/DoubleVectorStringStore/references/eStructuralFeatures/items/index.html": {
     "path": "DoubleVectorStringStore/References/items",
-    "link-uuid": "266fe080-e1ce-413d-a79e-397d0ab56e3e",
+    "link-uuid": "1a9df2fd-5a98-4f3b-9c60-c4f166c2417c",
     "title": "items",
-    "content": "Type DoubleVectorStringItem Multiplicity 0..* Store items"
+    "content": "Type DoubleVectorStringItem Multiplicity 0..* Store items",
+    "timestamp": 1747881432845
   }
 }
