@@ -27,11 +27,6 @@
 		    <version>1.1.0</version>
 		</dependency>
 		<dependency>
-		    <groupId>com.github.jelmerk</groupId>
-		    <artifactId>hnswlib-core-jdk17</artifactId>
-		    <version>1.2.1</version>
-		</dependency>
-		<dependency>
 			<groupId>org.nasdanika.core</groupId>
 			<artifactId>common</artifactId>
 			<version>${core.version}</version>
